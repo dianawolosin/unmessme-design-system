@@ -1,10 +1,10 @@
 import { PaletteOptions } from '@mui/material/styles';
 
 /**
- * UnmessMe Dark Mode Palette
+ * UnmessMe Dark Mode Palette (V2: The Void)
  * 
  * Based on design-system/tokens/colors.json
- * Dark charcoal base + bright playful accents
+ * Deep space background + glass surfaces + neon glows
  */
 export const palette: PaletteOptions = {
   mode: 'dark',
@@ -43,7 +43,7 @@ export const palette: PaletteOptions = {
   
   // Info: Lilac for reflective, introspective moments
   info: {
-    main: '#A78BFA',
+    main: '#A663CC',
     light: '#C3AEFB',
     dark: '#8567D8',
     contrastText: '#FFFFFF',
@@ -51,35 +51,35 @@ export const palette: PaletteOptions = {
   
   // Background colors
   background: {
-    default: '#121212',      // Deep charcoal - app background
-    paper: '#1E1E20',        // Midnight slate - surfaces, cards base
+    default: '#0F0F11',      // Deep Space Void
+    paper: 'rgba(30, 30, 35, 0.6)', // Midnight Glass (needs blur)
   },
   
   // Custom surface colors (extends MUI)
   // @ts-ignore - Custom palette extension
   surface: {
-    card: '#2C2C2E',         // Bento card surface
-    elevated: '#383838',     // Modals, dialogs, hover states
+    card: 'rgba(255, 255, 255, 0.03)',         // Glass Card Surface
+    elevated: 'rgba(255, 255, 255, 0.08)',     // Elevated Glass
   },
   
   // Text colors
   text: {
     primary: '#FFFFFF',
-    secondary: '#B3B3B3',
-    disabled: '#6B6B6B',
+    secondary: 'rgba(255, 255, 255, 0.7)',
+    disabled: 'rgba(255, 255, 255, 0.3)',
   },
   
   // Divider and borders
-  divider: '#3A3A3C',
+  divider: 'rgba(255, 255, 255, 0.08)',
   
   // Action states
   action: {
     active: '#FFFFFF',
     hover: 'rgba(255, 255, 255, 0.08)',
     selected: 'rgba(255, 255, 255, 0.16)',
-    disabled: '#6B6B6B',
-    disabledBackground: 'rgba(255, 255, 255, 0.12)',
-    focus: 'rgba(77, 163, 255, 0.4)',  // Sky blue focus
+    disabled: 'rgba(255, 255, 255, 0.3)',
+    disabledBackground: 'rgba(255, 255, 255, 0.05)',
+    focus: 'rgba(77, 163, 255, 0.6)',  // Brighter focus for void
   },
 };
 
@@ -91,7 +91,6 @@ export const customAccents = {
   coral: '#FF6B6B',
   sky: '#4DA3FF',
   mint: '#4ECDC4',
-  lilac: '#A78BFA',
+  lilac: '#A663CC',
   citrus: '#FCD34D',
 };
-

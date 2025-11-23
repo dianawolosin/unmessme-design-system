@@ -8,6 +8,7 @@ import {
   Stack,
   useTheme,
 } from '@mui/material';
+import { motion } from 'framer-motion';
 import { TagChip, TAG_ACCENT_COLORS, getRotatedAccentColor } from './TagChip';
 
 /**
@@ -70,37 +71,16 @@ export interface ProblemCardProps {
 }
 
 /**
- * ProblemCard Component
+ * ProblemCard Component (V2: Glassmorphism & Tilt)
  * 
- * A bento-style card component for displaying user problems with tags, metadata, and primary actions.
- * The cornerstone of UnmessMe's conversational problem-solving interface.
+ * A floating glass card for displaying user problems.
+ * Transforms chaos into clarity with physics-based interaction.
  * 
- * Based on Material Design 3 Cards, customized with:
- * - Bento-style rounded corners (16px)
- * - Dark mode first (charcoal surface + bright accents)
- * - Tag-based categorization (no rigid categories)
- * - Playful micro-interactions
- * - Full WCAG 2.2 AA compliance
- * 
- * @example
- * // Basic usage
- * <ProblemCard
- *   title="Behind on bills and feeling overwhelmed"
- *   tags={["money", "stress", "avoidance"]}
- *   accent="coral"
- *   onUnmess={() => console.log('Start unmess flow')}
- * />
- * 
- * @example
- * // With stress score and navigation
- * <ProblemCard
- *   title="Boss conflict at work"
- *   tags={["work", "relationships", "anxiety"]}
- *   stressScore={8}
- *   accent="lilac"
- *   onUnmess={handleUnmess}
- *   onClick={() => navigate('/problem/123')}
- * />
+ * Features:
+ * - Glassmorphism (backdrop-filter)
+ * - Physics-based tilt on hover (framer-motion)
+ * - Neon glow borders
+ * - "Bioluminescent" shadows
  */
 export function ProblemCard({
   title,
@@ -124,100 +104,58 @@ export function ProblemCard({
       stressScore ? ` Stress level: ${stressScore} out of 10.` : ''
     }`;
 
-  // Handle card click
-  const handleCardClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-    if (disabled || !onClick) return;
-    
-    // Don't trigger card click if clicking on buttons or chips
-    const target = e.target as HTMLElement;
-    if (target.closest('button') || target.closest('.MuiChip-root')) {
-      return;
-    }
-    
-    onClick();
-  };
+  // Random initial tilt for "messy desk" feel (-1deg to 1deg)
+  // We use a deterministic random based on title length to keep it stable during renders
+  const seed = title.length;
+  const initialRotate = disabled ? 0 : (seed % 3) - 1;
 
-  // Handle keyboard navigation for card
-  const handleCardKeyDown = (e: React.KeyboardEvent) => {
-    if (onClick && (e.key === 'Enter' || e.key === ' ')) {
-      e.preventDefault();
-      handleCardClick(e);
-    }
-  };
+  // Framer Motion wrapper for the Card
+  const MotionCard = motion(Card);
 
   return (
-    <Card
+    <MotionCard
       role="article"
       aria-label={computedAriaLabel}
       tabIndex={onClick && !disabled ? 0 : undefined}
-      onClick={handleCardClick}
-      onKeyDown={handleCardKeyDown}
+      onClick={!disabled && onClick ? onClick : undefined}
+      
+      // Animation Props
+      initial={{ rotate: initialRotate, scale: 1 }}
+      whileHover={!disabled && onClick ? { 
+        rotate: 0, 
+        scale: 1.02,
+        boxShadow: `0 12px 40px ${accentColor}40` // 25% opacity glow
+      } : {}}
+      whileTap={!disabled && onClick ? { scale: 0.98 } : {}}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+
       sx={{
-        // Base styling
-        backgroundColor: theme.palette.surface.card,
-        borderRadius: 2, // 16px (from theme spacing unit = 8px)
-        border: `1px solid ${theme.palette.divider}`,
-        position: 'relative',
-        overflow: 'hidden',
+        // Glassmorphism Base
+        backgroundColor: 'rgba(30, 30, 35, 0.6)', // Midnight Glass
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)', // Safari support
+        
+        // Border & Glow
+        borderRadius: 3, // 24px (3 * 8px)
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        borderTop: '1px solid rgba(255, 255, 255, 0.15)', // Top highlight
         
         // Dimensions
         minWidth: { xs: '280px', sm: 'auto' },
         maxWidth: '400px',
         height: 'auto',
+        overflow: 'hidden', // Clip children to rounded corners
         
-        // Elevation
-        boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.6)',
+        // Default Shadow (Void bioluminescence)
+        boxShadow: `0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px ${accentColor}20`, // Subtle colored outline
         
-        // Accent overlay (top edge)
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '4px',
-          background: accentColor,
-          opacity: 0.8,
-        },
-        
-        // Interactive state (if onClick is provided)
-        ...(onClick && !disabled && {
-          cursor: 'pointer',
-          transition: theme.transitions.create(
-            ['box-shadow', 'transform', 'border-color'],
-            {
-              duration: theme.transitions.duration.short,
-              easing: theme.transitions.easing.easeInOut,
-            }
-          ),
-          
-          // Hover state (desktop only)
-          '&:hover': {
-            boxShadow: '0 4px 16px 0 rgba(0, 0, 0, 0.7)',
-            borderColor: accentColor,
-            transform: 'translateY(-2px)',
-            
-            '@media (hover: none)': {
-              transform: 'none',
-            },
-          },
-          
-          // Focus state (keyboard navigation)
-          '&:focus-visible': {
-            outline: `3px solid rgba(77, 163, 255, 0.4)`,
-            outlineOffset: '2px',
-          },
-          
-          // Pressed state
-          '&:active': {
-            transform: 'translateY(0)',
-            boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.6)',
-          },
-        }),
+        // Interactive cursor
+        cursor: onClick && !disabled ? 'pointer' : 'default',
         
         // Disabled state
         ...(disabled && {
-          opacity: 0.5,
+          opacity: 0.6,
+          filter: 'grayscale(0.8)',
           pointerEvents: 'none',
         }),
       }}
@@ -228,11 +166,13 @@ export function ProblemCard({
           variant="h5"
           component="h3"
           sx={{
+            fontFamily: '"Space Grotesk", "Inter", sans-serif', // V2 Typography
             fontSize: '1.5rem',
             fontWeight: 600,
             lineHeight: 1.2,
-            mb: 1.5,
+            mb: 2,
             color: theme.palette.text.primary,
+            textShadow: '0 2px 4px rgba(0,0,0,0.3)', // Text legibility on glass
           }}
         >
           {title}
@@ -273,7 +213,7 @@ export function ProblemCard({
               variant="body2"
               sx={{
                 fontSize: '0.875rem',
-                color: theme.palette.text.secondary,
+                color: 'rgba(255, 255, 255, 0.7)', // Translucent white
               }}
             >
               Stress level:
@@ -285,30 +225,26 @@ export function ProblemCard({
               }}
             >
               {Array.from({ length: 10 }, (_, i) => (
-                <Box
+                <motion.div
                   key={i}
-                  sx={{
-                    width: 8,
-                    height: 16,
-                    borderRadius: 0.5,
-                    backgroundColor:
-                      i < stressScore
-                        ? accentColor
-                        : theme.palette.action.disabled,
+                  initial={{ scale: 1 }}
+                  animate={{ 
+                    opacity: i < stressScore ? 1 : 0.2,
+                    scale: i < stressScore ? 1 : 0.8 
                   }}
-                />
+                >
+                  <Box
+                    sx={{
+                      width: 6,
+                      height: 16,
+                      borderRadius: '4px', // Pill shape
+                      backgroundColor: accentColor,
+                      boxShadow: i < stressScore ? `0 0 8px ${accentColor}` : 'none', // Glow active bars
+                    }}
+                  />
+                </motion.div>
               ))}
             </Box>
-            <Typography
-              variant="body2"
-              sx={{
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                color: theme.palette.text.primary,
-              }}
-            >
-              {stressScore}/10
-            </Typography>
           </Box>
         )}
       </CardContent>
@@ -330,21 +266,19 @@ export function ProblemCard({
                 sx={{
                   flex: 1,
                   minHeight: 48,
-                  backgroundColor: accentColor,
-                  color: accent === 'citrus' ? '#000000' : '#FFFFFF',
-                  fontWeight: 600,
+                  background: `linear-gradient(135deg, ${accentColor} 0%, ${theme.palette.primary.dark} 100%)`,
+                  color: '#FFFFFF', // Always white on bright gradients
+                  fontWeight: 700,
                   textTransform: 'none',
                   fontSize: '1rem',
-                  borderRadius: 1.5,
+                  borderRadius: 4, // 32px - Super rounded
+                  boxShadow: `0 4px 12px ${accentColor}60`,
+                  border: '1px solid rgba(255,255,255,0.2)',
                   
                   '&:hover': {
-                    backgroundColor: accentColor,
-                    filter: 'brightness(1.1)',
-                  },
-                  
-                  '&:focus-visible': {
-                    outline: `3px solid rgba(77, 163, 255, 0.4)`,
-                    outlineOffset: '2px',
+                    background: `linear-gradient(135deg, ${accentColor} 0%, ${theme.palette.primary.main} 100%)`,
+                    boxShadow: `0 6px 20px ${accentColor}80`,
+                    transform: 'translateY(-1px)',
                   },
                 }}
               >
@@ -366,20 +300,16 @@ export function ProblemCard({
                   flex: onUnmess ? undefined : 1,
                   minHeight: 48,
                   minWidth: onUnmess ? 48 : undefined,
-                  borderColor: theme.palette.divider,
-                  color: theme.palette.text.primary,
+                  borderColor: 'rgba(255,255,255,0.2)',
+                  color: '#FFFFFF',
                   textTransform: 'none',
                   fontSize: '1rem',
-                  borderRadius: 1.5,
+                  borderRadius: 4, // 32px
                   
                   '&:hover': {
                     borderColor: accentColor,
-                    backgroundColor: 'transparent',
-                  },
-                  
-                  '&:focus-visible': {
-                    outline: `3px solid rgba(77, 163, 255, 0.4)`,
-                    outlineOffset: '2px',
+                    backgroundColor: 'rgba(255,255,255,0.05)',
+                    boxShadow: `0 0 12px ${accentColor}40`,
                   },
                 }}
               >
@@ -389,7 +319,7 @@ export function ProblemCard({
           </Stack>
         </CardActions>
       )}
-    </Card>
+    </MotionCard>
   );
 }
 
@@ -412,4 +342,3 @@ export function getCardAccentColor(
 ): keyof typeof TAG_ACCENT_COLORS {
   return getRotatedAccentColor(index);
 }
-
