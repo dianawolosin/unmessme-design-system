@@ -1,0 +1,37 @@
+{
+  "name": "unmessme-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "UnmessMe Design System - Monorepo workspace",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=@unmessme/prototype",
+    "dev:ds": "npm run dev --workspace=@unmessme/design-system",
+    "build": "npm run build --workspaces",
+    "build:ds": "npm run build --workspace=@unmessme/design-system",
+    "build:prototype": "npm run build --workspace=@unmessme/prototype",
+    "lint": "npm run lint --workspaces",
+    "typecheck": "npm run typecheck --workspaces"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unmessme/design-system"
+  },
+  "keywords": [
+    "design-system",
+    "material-ui",
+    "mui",
+    "react",
+    "typescript",
+    "monorepo"
+  ],
+  "author": "UnmessMe",
+  "license": "MIT"
+}
+

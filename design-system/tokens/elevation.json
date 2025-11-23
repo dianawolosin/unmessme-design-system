@@ -1,0 +1,48 @@
+{
+  "$schema": "https://design-tokens.org/schemas/1.0/schema.json",
+  "elevation": {
+    "none": {
+      "$value": "none",
+      "$type": "shadow",
+      "$description": "No shadow. Flat elements, disabled states."
+    },
+    "sm": {
+      "$value": "0 1px 2px 0 rgba(0, 0, 0, 0.5)",
+      "$type": "shadow",
+      "$description": "Small elevation - subtle depth for chips, small cards. Gentle shadow on dark backgrounds."
+    },
+    "md": {
+      "$value": "0 2px 8px 0 rgba(0, 0, 0, 0.6)",
+      "$type": "shadow",
+      "$description": "Medium elevation - default for cards, surfaces. Bento cards use this for gentle hierarchy."
+    },
+    "lg": {
+      "$value": "0 4px 16px 0 rgba(0, 0, 0, 0.7)",
+      "$type": "shadow",
+      "$description": "Large elevation - prominent cards, modals, dialogs. Strong depth on dark mode."
+    },
+    "xl": {
+      "$value": "0 8px 24px 0 rgba(0, 0, 0, 0.8)",
+      "$type": "shadow",
+      "$description": "Extra large elevation - floating elements, FABs, important overlays. Maximum depth."
+    },
+    "inner": {
+      "$value": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.4)",
+      "$type": "shadow",
+      "$description": "Inner shadow - for pressed states, inset elements, subtle depth inversion."
+    },
+    "glow": {
+      "focus": {
+        "$value": "0 0 0 3px rgba(77, 163, 255, 0.4)",
+        "$type": "shadow",
+        "$description": "Focus glow (sky blue) for keyboard navigation. Accessibility requirement - 3:1 contrast."
+      },
+      "accent": {
+        "$value": "0 0 20px 0 rgba(255, 107, 107, 0.3)",
+        "$type": "shadow",
+        "$description": "Accent glow (coral) for hover states on important actions. Subtle playful effect."
+      }
+    }
+  }
+}
+
