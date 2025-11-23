@@ -2,8 +2,7 @@
  * UnmessMe Spacing System
  * 
  * Based on design-system/tokens/spacing.json
- * MUI uses an 8px base unit by default (spacing(1) = 8px)
- * We're using a 4px base for more granular control
+ * V3: Digital Noir uses a 4px base scale.
  */
 
 /**
@@ -11,34 +10,30 @@
  * Multiplier based on 4px base unit
  * 
  * @example
- * spacing(1) = 4px   (xxs)
- * spacing(2) = 8px   (xs)
- * spacing(3) = 12px  (sm)
- * spacing(4) = 16px  (md) - default
- * spacing(6) = 24px  (lg)
- * spacing(8) = 32px  (xl)
- * spacing(12) = 48px (xxl) - touch target minimum
+ * spacing(1) = 4px   (base)
+ * spacing(4) = 16px  (md)
  */
 export const spacing = (factor: number): number => factor * 4;
 
 /**
  * Named spacing tokens for semantic usage
- * Use these in components for clarity
+ * Directly mapped to tokens/spacing.json primitives
  */
 export const spacingTokens = {
-  xxs: 4,    // 0.25rem - micro adjustments
-  xs: 8,     // 0.5rem  - chip padding, tight spacing
-  sm: 12,    // 0.75rem - small gaps
-  md: 16,    // 1rem    - default spacing, card padding
-  lg: 24,    // 1.5rem  - section spacing, bento card internal
-  xl: 32,    // 2rem    - major section breaks
-  xxl: 48,   // 3rem    - hero spacing
-  xxxl: 64,  // 4rem    - maximum spacing
+  base: 4,    // 0.25rem (4px)
+  xxs: 4,     // primitive.scale.1
+  xs: 8,      // primitive.scale.2
+  sm: 12,     // primitive.scale.3
+  md: 16,     // primitive.scale.4
+  lg: 24,     // primitive.scale.6
+  xl: 32,     // primitive.scale.8
+  xxl: 48,    // primitive.scale.12
+  xxxl: 64,   // primitive.scale.16
   
-  // Special tokens
-  touchTarget: 48,        // Minimum touch/click target (WCAG)
-  containerMax: 1280,     // Maximum container width
-  sidebarWidth: 280,      // Standard sidebar width
+  // Semantic mappings
+  touchTarget: 48,        // WCAG minimum
+  containerMax: 1280,     // layout.max_width
+  sidebarWidth: 280,      // layout.sidebar
 };
 
 /**
@@ -47,7 +42,6 @@ export const spacingTokens = {
 export const layout = {
   containerMaxWidth: '1280px',
   sidebarWidth: '280px',
-  gutterX: 16,  // Horizontal gutter (md)
-  gutterY: 24,  // Vertical gutter (lg)
+  gutterX: 16,  // md
+  gutterY: 24,  // lg
 };
-

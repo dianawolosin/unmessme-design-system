@@ -1,14 +1,15 @@
 import { Chip, ChipProps, useTheme } from '@mui/material';
+import { motion } from 'framer-motion';
 
 /**
- * Accent colors available for TagChip
+ * Accent colors available for TagChip (V3: Terminal)
  */
 export const TAG_ACCENT_COLORS = {
-  coral: '#FF6B6B',
-  sky: '#4DA3FF',
-  mint: '#4ECDC4',
-  lilac: '#A78BFA',
-  citrus: '#FCD34D',
+  terracotta: '#E07A5F',
+  iris: '#8187DC',
+  seafoam: '#2A9D8F',
+  bone: '#E0E1DD',
+  charcoal: '#3D405B',
 } as const;
 
 /**
@@ -77,37 +78,14 @@ export interface TagChipProps {
 }
 
 /**
- * TagChip Component
+ * TagChip Component (V3: Masking Tape)
  * 
- * A pill-shaped chip component for displaying and interacting with tags.
- * Core building block of UnmessMe's tag-based problem categorization system.
- * 
- * Based on Material Design 3 Chips, customized with:
- * - Pill shape (fully rounded)
- * - UnmessMe accent colors
- * - 48px touch targets (accessibility)
- * - Three variants: display, filter, input
+ * A rectangular, tape-like chip component for displaying tags.
+ * V3 styling: Masking tape aesthetic, monospace font, slight rotation.
  * 
  * @example
  * // Display chip (read-only)
- * <TagChip label="money" color="coral" />
- * 
- * @example
- * // Filter chip (toggleable)
- * <TagChip
- *   label="work"
- *   variant="filter"
- *   selected={isSelected}
- *   onClick={handleToggle}
- * />
- * 
- * @example
- * // Input chip (removable)
- * <TagChip
- *   label="stress"
- *   variant="input"
- *   onDelete={handleDelete}
- * />
+ * <TagChip label="money" color="terracotta" />
  */
 export function TagChip({
   label,
@@ -124,12 +102,23 @@ export function TagChip({
   const theme = useTheme();
 
   // Determine background color
-  const backgroundColor = color === 'default'
-    ? theme.palette.background.paper
+  const accentHex = color === 'default'
+    ? theme.palette.semantic.bg.surface // Use semantic surface
     : TAG_ACCENT_COLORS[color];
 
-  // Determine text color (citrus needs dark text for contrast)
-  const textColor = color === 'citrus' ? '#000000' : '#FFFFFF';
+  // Tape Style: Low opacity background + solid border
+  const backgroundColor = color === 'default' 
+    ? accentHex 
+    : `${accentHex}33`; // 20% opacity
+
+  const borderColor = color === 'default'
+    ? 'transparent'
+    : accentHex;
+
+  // Determine text color
+  const textColor = color === 'default' 
+    ? theme.palette.semantic.text.primary // Use semantic text
+    : theme.palette.semantic.text.primary; // Keep all text Bone White for consistency
 
   // Build ARIA label
   const computedAriaLabel = ariaLabel || 
@@ -141,6 +130,10 @@ export function TagChip({
 
   // Determine if chip is clickable
   const clickable = variant === 'filter' || (variant === 'display' && !!onClick);
+
+  // Random rotation for "tape" effect (-2deg to 2deg)
+  const seed = label.length;
+  const rotation = variant === 'display' ? (seed % 5) - 2 : 0;
 
   // Build MUI Chip props
   const chipProps: ChipProps = {
@@ -172,56 +165,62 @@ export function TagChip({
 
     // Styling
     sx: {
-      // Shape - pill (fully rounded)
-      borderRadius: '9999px',
+      // Shape - Tape (Rectangular with slight radius)
+      borderRadius: '2px',
       
       // Colors
       backgroundColor,
       color: textColor,
+      border: `1px solid ${borderColor}`,
       
-      // Typography
-      fontSize: size === 'small' ? '11px' : '12px',
-      fontWeight: 500,
+      // Typography (Monospace for V3)
+      fontFamily: '"JetBrains Mono", monospace',
+      fontSize: size === 'small' ? '11px' : '12px', // Slightly larger text
+      fontWeight: 600,
       letterSpacing: '0.05em',
-      textTransform: 'lowercase',
+      textTransform: 'lowercase', // Masking tape style (lowercase)
       
       // Dimensions
-      height: size === 'small' ? '24px' : '32px',
-      minHeight: size === 'small' ? '24px' : '32px',
-      padding: size === 'small' ? '2px 6px' : '4px 8px',
+      height: size === 'small' ? '20px' : '24px', // Revert to tight height (masking tape)
       
-      // Touch target (48px minimum) - achieved with margin/padding
+      // Override MUI Chip label padding
+      '& .MuiChip-label': {
+        paddingLeft: size === 'small' ? '4px' : '6px',
+        paddingRight: size === 'small' ? '4px' : '6px',
+        // Ensure text is vertically centered in tighter height
+        lineHeight: 1,
+        display: 'block',
+      },
+
+      padding: size === 'small' ? '0px 2px' : '0px 4px', // Minimal padding
+      
+      // Force override potential MUI min-heights
+      minHeight: 'unset',
+      
+      // Touch target (48px minimum) - achieved with margin/padding wrapper if needed
       minWidth: 'auto',
       
-      // Elevation
-      boxShadow: selected 
-        ? '0 2px 8px 0 rgba(0, 0, 0, 0.6)'  // Elevated when selected
-        : '0 1px 2px 0 rgba(0, 0, 0, 0.5)',  // Subtle default
-      
-      // Selected state (filter variant)
-      ...(selected && variant === 'filter' && {
-        border: '2px solid #4DA3FF',
-        borderColor: theme.palette.info.main,
-      }),
+      // Physics
+      transform: `rotate(${rotation}deg)`,
       
       // Hover state (desktop only)
       '&:hover': clickable ? {
         backgroundColor: color === 'default'
           ? theme.palette.background.default
-          : backgroundColor,
-        transform: 'scale(1.02)',
-        boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.6)',
+          : `${accentHex}66`, // Darker on hover
+        transform: 'rotate(0deg) scale(1.05)', // Snap straight
         
         // Prevent sticky hover on mobile
         '@media (hover: none)': {
-          transform: 'none',
+          transform: `rotate(${rotation}deg)`,
         },
       } : undefined,
       
-      // Focus state (keyboard navigation)
+      // Focus state
       '&:focus-visible': {
-        outline: '3px solid rgba(77, 163, 255, 0.4)',
+        outline: `2px solid ${theme.palette.semantic.status.success}`, // Use semantic success (Seafoam)
         outlineOffset: '2px',
+        transform: 'rotate(0deg)',
       },
       
       // Disabled state
@@ -230,11 +229,11 @@ export function TagChip({
         pointerEvents: 'none',
       }),
       
-      // Delete icon styling (input variant)
+      // Delete icon styling
       '& .MuiChip-deleteIcon': {
         color: textColor,
         opacity: 0.7,
-        fontSize: '18px',
+        fontSize: '14px',
         
         '&:hover': {
           opacity: 1,
@@ -244,7 +243,7 @@ export function TagChip({
       
       // Smooth transitions
       transition: theme.transitions.create(
-        ['transform', 'box-shadow', 'background-color'],
+        ['transform', 'box-shadow', 'background-color', 'border-color'],
         {
           duration: theme.transitions.duration.short,
           easing: theme.transitions.easing.easeInOut,
@@ -258,27 +257,15 @@ export function TagChip({
 
 /**
  * Helper function to rotate through accent colors
- * Useful for displaying multiple tags with visual variety
- * 
- * @example
- * {tags.map((tag, index) => (
- *   <TagChip
- *     key={tag}
- *     label={tag}
- *     color={getRotatedAccentColor(index)}
- *   />
- * ))}
  */
 export function getRotatedAccentColor(
   index: number
 ): keyof typeof TAG_ACCENT_COLORS {
   const colors: (keyof typeof TAG_ACCENT_COLORS)[] = [
-    'coral',
-    'sky',
-    'mint',
-    'lilac',
-    'citrus',
+    'terracotta',
+    'iris',
+    'seafoam',
+    'charcoal',
   ];
   return colors[index % colors.length];
 }
-

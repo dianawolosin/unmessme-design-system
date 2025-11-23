@@ -123,22 +123,22 @@ export function ProblemCard({
       initial={{ rotate: initialRotate, scale: 1 }}
       whileHover={!disabled && onClick ? { 
         rotate: 0, 
-        scale: 1.02,
-        boxShadow: `0 12px 40px ${accentColor}40` // 25% opacity glow
+        scale: 1.005, // Very subtle scale
+        boxShadow: `0 12px 40px rgba(0,0,0,0.6)` // Monochromatic dark shadow, no color glow
       } : {}}
-      whileTap={!disabled && onClick ? { scale: 0.98 } : {}}
+      whileTap={!disabled && onClick ? { scale: 0.99 } : {}}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
 
       sx={{
         // Glassmorphism Base
-        backgroundColor: 'rgba(30, 30, 35, 0.6)', // Midnight Glass
+        backgroundColor: theme.palette.semantic.bg.surface, // Semantic Surface
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)', // Safari support
         
         // Border & Glow
-        borderRadius: 3, // 24px (3 * 8px)
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        borderTop: '1px solid rgba(255, 255, 255, 0.15)', // Top highlight
+        borderRadius: 2, // 16px - tighter than before (was 24px)
+        border: `1px solid ${theme.palette.semantic.border.subtle}`, // Semantic Border
+        borderTop: `1px solid ${theme.palette.semantic.border.highlight}`, // Semantic Highlight
         
         // Dimensions
         minWidth: { xs: '280px', sm: 'auto' },
@@ -166,12 +166,12 @@ export function ProblemCard({
           variant="h5"
           component="h3"
           sx={{
-            fontFamily: '"Space Grotesk", "Inter", sans-serif', // V2 Typography
+            fontFamily: '"Fraunces", serif', // V3 Typography
             fontSize: '1.5rem',
             fontWeight: 600,
             lineHeight: 1.2,
             mb: 2,
-            color: theme.palette.text.primary,
+            color: theme.palette.semantic.text.primary, // Semantic Text
             textShadow: '0 2px 4px rgba(0,0,0,0.3)', // Text legibility on glass
           }}
         >
@@ -213,37 +213,32 @@ export function ProblemCard({
               variant="body2"
               sx={{
                 fontSize: '0.875rem',
-                color: 'rgba(255, 255, 255, 0.7)', // Translucent white
+                color: theme.palette.semantic.text.secondary, // Semantic Secondary
               }}
             >
               Stress level:
             </Typography>
             <Box
               sx={{
-                display: 'flex',
-                gap: 0.5,
+                flexGrow: 1,
+                height: 6,
+                backgroundColor: theme.palette.semantic.border.subtle, // Use border color for track
+                borderRadius: '999px',
+                overflow: 'hidden',
+                position: 'relative',
               }}
             >
-              {Array.from({ length: 10 }, (_, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ scale: 1 }}
-                  animate={{ 
-                    opacity: i < stressScore ? 1 : 0.2,
-                    scale: i < stressScore ? 1 : 0.8 
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: 6,
-                      height: 16,
-                      borderRadius: '4px', // Pill shape
-                      backgroundColor: accentColor,
-                      boxShadow: i < stressScore ? `0 0 8px ${accentColor}` : 'none', // Glow active bars
-                    }}
-                  />
-                </motion.div>
-              ))}
+              <Box
+                sx={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  height: '100%',
+                  width: `${(stressScore / 10) * 100}%`,
+                  backgroundColor: accentColor,
+                  borderRadius: '999px',
+                }}
+              />
             </Box>
           </Box>
         )}
@@ -266,19 +261,22 @@ export function ProblemCard({
                 sx={{
                   flex: 1,
                   minHeight: 48,
-                  background: `linear-gradient(135deg, ${accentColor} 0%, ${theme.palette.primary.dark} 100%)`,
-                  color: '#FFFFFF', // Always white on bright gradients
+                  // Match UnmessButton (FAB) style
+                  backgroundColor: theme.palette.semantic.action.primary, // Semantic Action
+                  color: theme.palette.semantic.text.inverse, // Semantic Inverse Text
+                  fontFamily: '"JetBrains Mono", monospace',
                   fontWeight: 700,
-                  textTransform: 'none',
-                  fontSize: '1rem',
-                  borderRadius: 4, // 32px - Super rounded
-                  boxShadow: `0 4px 12px ${accentColor}60`,
-                  border: '1px solid rgba(255,255,255,0.2)',
+                  textTransform: 'none', // Normal case
+                  letterSpacing: '0.05em',
+                  fontSize: '0.9rem',
+                  borderRadius: '8px', // Square-ish
+                  boxShadow: 'none', // No default shadow/glow
+                  border: `1px solid ${theme.palette.semantic.action.primary}40`,
                   
                   '&:hover': {
-                    background: `linear-gradient(135deg, ${accentColor} 0%, ${theme.palette.primary.main} 100%)`,
-                    boxShadow: `0 6px 20px ${accentColor}80`,
-                    transform: 'translateY(-1px)',
+                    backgroundColor: theme.palette.semantic.action.hover, // Semantic Hover
+                    boxShadow: 'none',
+                    transform: 'none', // Remove scale effect
                   },
                 }}
               >
@@ -300,16 +298,19 @@ export function ProblemCard({
                   flex: onUnmess ? undefined : 1,
                   minHeight: 48,
                   minWidth: onUnmess ? 48 : undefined,
-                  borderColor: 'rgba(255,255,255,0.2)',
-                  color: '#FFFFFF',
-                  textTransform: 'none',
-                  fontSize: '1rem',
-                  borderRadius: 4, // 32px
+                  borderColor: theme.palette.semantic.border.highlight, // Semantic highlight
+                  color: theme.palette.semantic.text.secondary, // Semantic Secondary text
+                  fontFamily: '"JetBrains Mono", monospace',
+                  textTransform: 'none', // Normal case
+                  letterSpacing: '0.05em',
+                  fontSize: '0.85rem',
+                  borderRadius: '8px', // Square-ish
                   
                   '&:hover': {
-                    borderColor: accentColor,
-                    backgroundColor: 'rgba(255,255,255,0.05)',
-                    boxShadow: `0 0 12px ${accentColor}40`,
+                    borderColor: theme.palette.semantic.action.primary, // Hover becomes primary
+                    color: theme.palette.semantic.action.primary,
+                    backgroundColor: 'rgba(42, 157, 143, 0.05)', // Keep very subtle tint manually or create token
+                    boxShadow: 'none', // No shadow for secondary
                   },
                 }}
               >

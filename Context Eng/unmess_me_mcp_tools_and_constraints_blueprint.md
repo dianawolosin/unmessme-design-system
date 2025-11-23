@@ -79,15 +79,18 @@ Returns legal + emotional safety rules. Used for:
 
 **Input:** Token category (e.g., `color`, `spacing`, `typography`)
 
-**Output:** JSON structure with token definitions
+**Output:** JSON structure with token definitions.
+
+**CRITICAL Constraint:** All generated code must reference Semantic Tokens, NEVER Primitives or Raw Values.
 
 ```json
 {
   "category": "color",
   "tokens": {
-    "surface.card": "#2C2C2E",
-    "accent.coral": "#FF6B6B",
-    "text.primary": "#FFFFFF"
+    "semantic": {
+      "bg": { "canvas": "{color.primitive.slate.900}" },
+      "action": { "primary": "{color.primitive.seafoam.main}" }
+    }
   }
 }
 ```
@@ -156,11 +159,14 @@ The tool must:
 
 ### 3.3 `generate_component_spec`
 
-For custom or reusable components. Ensures:
+**Input:**
 
-- props adhere to a11y + UI blueprint
-- touch targets are valid
-- colors meet contrast requirements
+- component name
+- usage intent
+
+**Output:** React/JSX code.
+
+**CONSTRAINT:** Must use Semantic Tokens via `theme.palette.semantic.*`. No hardcoded hex values allowed.
 
 ### 3.4 `generate_react_ui_code`
 
@@ -168,8 +174,7 @@ Emits React/JSX code using MUI components. Must:
 
 - match component specs
 - follow UI + accessibility rules
-- avoid code that produces inaccessible combinations
-- use MUI components + custom theme tokens
+- use MUI components + custom semantic theme tokens
 - generate TypeScript-compatible code
 
 **Output Format:**
@@ -192,7 +197,22 @@ The **react_code** is run directly in the Prototype Environment (React app). No 
 
 ## 4. Technical Constraints the AI Must Follow
 
-### 4.1 Determinism and Structure
+### 4.1 Semantic Token System (MANDATORY)
+
+The Design System uses a **Reference -> Semantic** architecture. The AI must strictly adhere to this:
+
+1.  **Primitives (Reference):** Defined in `color.primitive.*`. NEVER use these directly in components.
+2.  **Semantics (System):** Defined in `color.semantic.*`. USE THESE.
+3.  **Implementation:** Access via MUI Theme Augmentation: `theme.palette.semantic.action.primary`.
+
+**FORBIDDEN:**
+- `backgroundColor: '#2A9D8F'` (Raw Hex)
+- `backgroundColor: theme.palette.primary.main` (MUI Standard - okay if mapped, but prefer semantic)
+
+**REQUIRED:**
+- `backgroundColor: theme.palette.semantic.action.primary` (Semantic Token)
+
+### 4.2 Determinism and Structure
 
 The AI must:
 
@@ -201,7 +221,7 @@ The AI must:
 - follow naming conventions
 - output predictable screen structures
 
-### 4.2 A11y Enforcement
+### 4.3 A11y Enforcement
 
 Before finalizing any screen or flow, the MCP must:
 
@@ -216,7 +236,7 @@ If violations occur, MCP must:
 - adjust the output automatically OR
 - return an error message
 
-### 4.3 Ethical Enforcement
+### 4.4 Ethical Enforcement
 
 All steps, tasks, and flows must:
 
@@ -224,25 +244,13 @@ All steps, tasks, and flows must:
 - avoid sarcasm when emotional tone is high
 - include disclaimers where required
 
-### 4.4 UI Consistency
+### 4.5 UI Consistency
 
 All components must follow:
 
 - Material-inspired geometry
 - dark mode color rules
 - layout spacing rules
-
-### 4.5 Internal Tool Dependencies
-
-`generate_screen_spec` must internally use:
-
-- BI
-- UX
-- UI
-- Accessibility
-- Ethical Guardrails
-
-The MCP must not generate UI that violates any blueprint.
 
 ---
 
@@ -272,7 +280,7 @@ The **Prototype Environment** is a React web application that:
         TagChip.md
         UnmessButton.md
       tokens/
-        colors.json                   # W3C Design tokens
+        colors.json                   # W3C Design tokens (Primitive + Semantic)
         spacing.json
         typography.json
         elevation.json
@@ -284,10 +292,10 @@ The **Prototype Environment** is a React web application that:
           UnmessButton.tsx
         theme/                        # MUI custom theme configuration
           index.ts
-          palette.ts
+          palette.ts                  # Palette Augmentation (Semantic Types)
           typography.ts
           spacing.ts
-          components.ts
+          components.ts               # Global Component Overrides (Semantic)
         index.ts                      # Main export (exports theme + components)
     
     prototype/                        # Demo/Prototype environment
@@ -412,4 +420,4 @@ This blueprint ensures the MCP acts as a **structured, rule-bound design engine*
 - The **Prototype Environment** (React web app) runs generated code live—no simulation, production-ready web app.
 - **Enterprise-scale**: Design system built for hundreds of designers/engineers using React + MUI.
 - **JSON + MD format** enables both machine consumption (JSON metadata) and AI reasoning (Markdown docs).
-
+- **Token Architecture**: Reference (Primitive) -> System (Semantic) -> Component tokens.

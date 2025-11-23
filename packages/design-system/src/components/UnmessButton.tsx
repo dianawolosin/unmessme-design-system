@@ -16,13 +16,13 @@ export interface UnmessButtonProps {
 
   /**
    * Button label text (for extended variant)
-   * @default "Unmess Me"
+   * @default "ACTIVATE UNMESS PROTOCOL"
    */
   label?: string;
 
   /**
    * Icon override (optional)
-   * Default: AutoAwesome icon (✨ sparkles - represents "make order from chaos")
+   * Default: AutoAwesome icon
    */
   icon?: React.ReactElement;
 
@@ -55,7 +55,7 @@ export interface UnmessButtonProps {
 
   /**
    * Color variant
-   * @default "primary" (sky blue)
+   * @default "primary" (seafoam)
    */
   color?: 'primary' | 'secondary';
 
@@ -79,14 +79,14 @@ export interface UnmessButtonProps {
 }
 
 /**
- * UnmessButton Component
+ * UnmessButton Component (V3: The Launch Switch)
  * 
- * A prominent Floating Action Button (FAB) that triggers UnmessMe's core action:
- * breaking down chaotic problems into structured, actionable steps.
+ * A mechanical, glowing pill button that triggers the Unmess Protocol.
+ * Features monospace type, tracking, and a hard shadow glow.
  */
 export function UnmessButton({
   variant = 'extended',
-  label = 'Unmess Me',
+  label = 'ACTIVATE UNMESS PROTOCOL',
   icon,
   onClick,
   loading = false,
@@ -101,77 +101,85 @@ export function UnmessButton({
 
   // Compute size dimensions
   const sizeMap = {
-    small: { height: 40, iconSize: 20 },
-    medium: { height: 56, iconSize: 24 },
-    large: { height: 64, iconSize: 28 },
+    small: { height: 32, iconSize: 16 },
+    medium: { height: 48, iconSize: 20 },
+    large: { height: 56, iconSize: 24 },
   };
   const dimensions = sizeMap[size];
 
   // Build ARIA label
   const computedAriaLabel = ariaLabel ||
     (loading
-      ? 'Processing your problem, please wait'
-      : 'Start unmess process - break down problem into actionable steps');
+      ? 'Processing protocol, please wait'
+      : 'Activate Unmess Protocol');
 
-  // Base FAB styles
+  // Determine accent color
+  const accentColor = color === 'primary' 
+    ? theme.palette.primary.main 
+    : theme.palette.secondary.main;
+
+  // Base FAB styles (V3: Mechanical Pill)
   const fabStyles: SxProps<Theme> = {
     // Size
     minHeight: dimensions.height,
     minWidth: dimensions.height,
     height: dimensions.height,
     ...(variant === 'extended' && {
-      minWidth: 80,
-      px: 2,
+      minWidth: 120,
+      px: 3,
     }),
 
-    // Shape
-    borderRadius: variant === 'extended' ? '9999px' : '50%',
+    // Shape (Pill -> Rounded Square for V3 consistency)
+    borderRadius: '12px',
 
-    // Typography (extended variant)
+    // Colors
+    backgroundColor: accentColor,
+    color: '#121619', // Always dark text on bright pill
+
+    // Typography (V3: Monospace, Uppercase, Tracking)
+    fontFamily: '"JetBrains Mono", monospace',
     ...(variant === 'extended' && {
-      fontSize: '0.875rem',
-      fontWeight: 500,
+      fontSize: '0.85rem', // Slightly larger for readability
+      fontWeight: 700,
       letterSpacing: '0.05em',
-      textTransform: 'none',
-      gap: 1,
+      textTransform: 'none', // Normal case
+      gap: 1.5,
     }),
 
-    // Elevation
-    boxShadow: '0 8px 24px 0 rgba(0, 0, 0, 0.8)',
+    // Elevation (Glow) - REMOVED for flat material feel
+    boxShadow: 'none',
 
     // Hover state (desktop only)
     '&:hover:not(:disabled)': {
-      boxShadow: [
-        '0 8px 24px 0 rgba(0, 0, 0, 0.8)',
-        '0 0 20px 0 rgba(77, 163, 255, 0.4)',
-      ].join(', '),
-      transform: 'scale(1.05)',
+      backgroundColor: theme.palette.augmentColor({ color: { main: accentColor } }).dark, // Standard Material darkening
+      boxShadow: 'none', 
+      transform: 'none', // Remove scale effect
 
       // Disable hover effects on touch devices
       '@media (hover: none)': {
         transform: 'none',
-        boxShadow: '0 8px 24px 0 rgba(0, 0, 0, 0.8)',
+        boxShadow: `0 0 20px ${accentColor}66`,
       },
     },
 
     // Focus state (keyboard navigation)
     '&:focus-visible': {
-      outline: '3px solid rgba(77, 163, 255, 0.6)',
+      outline: `2px solid ${theme.palette.common.white}`,
       outlineOffset: '4px',
     },
 
-    // Active/pressed state - micro-bounce
+    // Active/pressed state - mechanical click
     '&:active:not(:disabled)': {
-      transform: 'scale(0.95)',
-      boxShadow: '0 4px 12px 0 rgba(0, 0, 0, 0.7)',
+      transform: 'scale(0.98)',
+      boxShadow: `0 0 10px ${accentColor}40`,
     },
 
     // Smooth transitions
     transition: theme.transitions.create(
       ['transform', 'box-shadow', 'background-color'],
       {
-        duration: '0.2s',
-        easing: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+        duration: '0.1s', // Snappy
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
       }
     ),
 
@@ -179,11 +187,12 @@ export function UnmessButton({
     ...(disabled && {
       opacity: 0.5,
       pointerEvents: 'none',
+      backgroundColor: theme.palette.action.disabledBackground,
     }),
 
     // Loading state
     ...(loading && {
-      opacity: 0.7,
+      opacity: 0.8,
       pointerEvents: 'none',
     }),
 
@@ -195,8 +204,8 @@ export function UnmessButton({
   const wrapperStyles: SxProps<Theme> | undefined = position === 'fixed'
     ? {
         position: 'fixed',
-        bottom: { xs: 24, sm: 32 },
-        right: { xs: 'auto', sm: 32 },
+        bottom: { xs: 24, sm: 40 },
+        right: { xs: '50%', sm: 40 },
         left: { xs: '50%', sm: 'auto' },
         transform: { xs: 'translateX(-50%)', sm: 'none' },
         zIndex: theme.zIndex.fab,
@@ -208,7 +217,6 @@ export function UnmessButton({
     const fab = (
       <Fab
         variant={variant}
-        color={color}
         disabled
         aria-label={computedAriaLabel}
         aria-busy={true}
@@ -216,7 +224,7 @@ export function UnmessButton({
       >
         <CircularProgress
           size={dimensions.iconSize}
-          sx={{ color: '#FFFFFF' }}
+          sx={{ color: '#121619' }}
         />
       </Fab>
     );
@@ -224,20 +232,17 @@ export function UnmessButton({
     return position === 'fixed' ? <Box sx={wrapperStyles}>{fab}</Box> : fab;
   }
 
-  // Determine the icon to render
-  // const IconComponent = AutoAwesomeIcon;
-
   // Handle standard content
   const fab = (
     <Fab
       variant={variant}
-      color={color}
       onClick={onClick}
       disabled={disabled}
       aria-label={computedAriaLabel}
       sx={fabStyles}
     >
-      {icon || <AutoAwesome sx={{ fontSize: dimensions.iconSize }} />}
+      {/* No icon by default in V3, relying on text power. But keeping support if passed. */}
+      {icon} 
       {variant === 'extended' && label}
     </Fab>
   );

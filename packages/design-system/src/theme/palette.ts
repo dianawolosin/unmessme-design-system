@@ -1,96 +1,136 @@
-import { PaletteOptions } from '@mui/material/styles';
+import { PaletteOptions, Palette, PaletteColor } from '@mui/material/styles';
+
+// Extend MUI Palette types to include our Semantic System
+declare module '@mui/material/styles' {
+  interface Palette {
+    semantic: {
+      bg: {
+        canvas: string;
+        surface: string;
+      };
+      text: {
+        primary: string;   // Added
+        secondary: string; // Added
+        disabled: string;  // Added
+        inverse: string;
+      };
+      action: {
+        primary: string;
+        hover: string;
+      };
+      status: {
+        urgent: string;
+        analysis: string;
+        success: string;
+      };
+      border: {
+        subtle: string;
+        highlight: string;
+      };
+    };
+  }
+
+  interface PaletteOptions {
+    semantic?: {
+      bg: {
+        canvas: string;
+        surface: string;
+      };
+      text: {
+        primary: string;   // Added
+        secondary: string; // Added
+        disabled: string;  // Added
+        inverse: string;
+      };
+      action: {
+        primary: string;
+        hover: string;
+      };
+      status: {
+        urgent: string;
+        analysis: string;
+        success: string;
+      };
+      border: {
+        subtle: string;
+        highlight: string;
+      };
+    };
+  }
+}
 
 /**
- * UnmessMe Dark Mode Palette (V2: The Void)
+ * UnmessMe Dark Mode Palette (V3: Digital Noir)
  * 
- * Based on design-system/tokens/colors.json
- * Deep space background + glass surfaces + neon glows
+ * Now using Semantic Token Reference (from colors.json)
  */
 export const palette: PaletteOptions = {
   mode: 'dark',
   
-  // Primary: Sky Blue for CTAs, conversational elements
+  // Map Standard MUI Slots to Semantic Tokens
   primary: {
-    main: '#4DA3FF',
-    light: '#7DBFFF',
-    dark: '#2B7FCC',
-    contrastText: '#FFFFFF',
+    main: '#2A9D8F', // semantic.action.primary
+    light: '#4DC0B2', // primitive.seafoam.light
+    dark: '#1F7A70', // semantic.action.hover
+    contrastText: '#121619', // semantic.text.inverse
   },
   
-  // Secondary: Coral for emotional highlights, problem cards
   secondary: {
-    main: '#FF6B6B',
-    light: '#FF9494',
-    dark: '#CC4545',
-    contrastText: '#FFFFFF',
+    main: '#E07A5F', // semantic.status.urgent
+    contrastText: '#121619',
   },
   
-  // Success: Mint/Teal for positive actions, progress
-  success: {
-    main: '#4ECDC4',
-    light: '#7EDDD6',
-    dark: '#3BA49D',
-    contrastText: '#FFFFFF',
-  },
-  
-  // Warning: Citrus Yellow for highlights, energy
-  warning: {
-    main: '#FCD34D',
-    light: '#FDDF7A',
-    dark: '#CAA93E',
-    contrastText: '#000000',
-  },
-  
-  // Info: Lilac for reflective, introspective moments
   info: {
-    main: '#A663CC',
-    light: '#C3AEFB',
-    dark: '#8567D8',
-    contrastText: '#FFFFFF',
+    main: '#8187DC', // semantic.status.analysis
+    contrastText: '#121619',
   },
   
-  // Background colors
   background: {
-    default: '#0F0F11',      // Deep Space Void
-    paper: 'rgba(30, 30, 35, 0.6)', // Midnight Glass (needs blur)
+    default: '#121619', // semantic.bg.canvas
+    paper: 'rgba(30, 35, 39, 0.6)', // semantic.bg.surface
   },
   
-  // Custom surface colors (extends MUI)
-  // @ts-ignore - Custom palette extension
-  surface: {
-    card: 'rgba(255, 255, 255, 0.03)',         // Glass Card Surface
-    elevated: 'rgba(255, 255, 255, 0.08)',     // Elevated Glass
-  },
-  
-  // Text colors
   text: {
-    primary: '#FFFFFF',
-    secondary: 'rgba(255, 255, 255, 0.7)',
-    disabled: 'rgba(255, 255, 255, 0.3)',
+    primary: '#E0E1DD', // semantic.text.primary
+    secondary: 'rgba(224, 225, 221, 0.6)', // semantic.text.secondary
+    disabled: 'rgba(224, 225, 221, 0.3)', // semantic.text.disabled
   },
-  
-  // Divider and borders
-  divider: 'rgba(255, 255, 255, 0.08)',
-  
-  // Action states
-  action: {
-    active: '#FFFFFF',
-    hover: 'rgba(255, 255, 255, 0.08)',
-    selected: 'rgba(255, 255, 255, 0.16)',
-    disabled: 'rgba(255, 255, 255, 0.3)',
-    disabledBackground: 'rgba(255, 255, 255, 0.05)',
-    focus: 'rgba(77, 163, 255, 0.6)',  // Brighter focus for void
+
+  divider: 'rgba(255, 255, 255, 0.08)', // semantic.border.subtle
+
+  // The Semantic System (New)
+  semantic: {
+    bg: {
+      canvas: '#121619',
+      surface: 'rgba(30, 35, 39, 0.6)',
+    },
+    text: {
+      primary: '#E0E1DD',
+      secondary: 'rgba(224, 225, 221, 0.6)',
+      disabled: 'rgba(224, 225, 221, 0.3)',
+      inverse: '#121619',
+    },
+    action: {
+      primary: '#2A9D8F',
+      hover: '#1F7A70',
+    },
+    status: {
+      urgent: '#E07A5F',
+      analysis: '#8187DC',
+      success: '#2A9D8F',
+    },
+    border: {
+      subtle: 'rgba(255, 255, 255, 0.08)',
+      highlight: 'rgba(255, 255, 255, 0.15)',
+    },
   },
 };
 
-/**
- * Custom accent colors for UnmessMe components
- * Use these for problem cards, tags, special UI elements
- */
+// Keep for backward compatibility until full migration
 export const customAccents = {
-  coral: '#FF6B6B',
-  sky: '#4DA3FF',
-  mint: '#4ECDC4',
-  lilac: '#A663CC',
-  citrus: '#FCD34D',
+  terracotta: '#E07A5F',
+  iris: '#8187DC',
+  seafoam: '#2A9D8F',
+  bone: '#E0E1DD',
+  charcoal: '#3D405B',
 };

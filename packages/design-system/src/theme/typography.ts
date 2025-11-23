@@ -1,73 +1,81 @@
 import { TypographyOptions } from '@mui/material/styles/createTypography';
 
 /**
- * UnmessMe Typography System
+ * UnmessMe Typography System (V3: Digital Noir)
  * 
  * Based on design-system/tokens/typography.json
- * Material-inspired scale with friendly, approachable tone
+ * Editorial (Fraunces) + Technical (JetBrains Mono)
  */
 export const typography: TypographyOptions = {
-  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif",
+  fontFamily: "'Inter', sans-serif", // Fallback global font (primitive.fontFamily.sans)
   
-  // Display - Hero statements (56px)
+  // Display - Hero statements
   h1: {
-    fontSize: '3.5rem',     // 56px
-    fontWeight: 700,
+    fontFamily: "'Fraunces', serif", // semantic.heading.display.font
+    fontSize: '3.5rem',     // semantic.heading.display.size
+    fontWeight: 700,        // semantic.heading.display.weight
     lineHeight: 1.2,
     letterSpacing: '-0.02em',
   },
   
-  // Headline 1 - Main section titles (40px)
+  // Headline 1 - Main section titles
   h2: {
-    fontSize: '2.5rem',     // 40px
+    fontFamily: "'Fraunces', serif",
+    fontSize: '2.5rem',
     fontWeight: 700,
     lineHeight: 1.2,
     letterSpacing: '-0.02em',
   },
   
-  // Headline 2 - Sub-section titles (32px)
+  // Headline 2 - Sub-section titles
   h3: {
-    fontSize: '2rem',       // 32px
+    fontFamily: "'Fraunces', serif",
+    fontSize: '2rem',
     fontWeight: 600,
     lineHeight: 1.2,
     letterSpacing: '-0.02em',
   },
   
-  // Headline 3 - Card titles, problem titles (24px)
+  // Headline 3 - Card titles
   h4: {
-    fontSize: '1.5rem',     // 24px
-    fontWeight: 600,
+    fontFamily: "'Fraunces', serif", // semantic.heading.card.font
+    fontSize: '1.5rem',     // semantic.heading.card.size
+    fontWeight: 600,        // semantic.heading.card.weight
     lineHeight: 1.2,
     letterSpacing: '0',
   },
   
-  // Headline 4 - Small section headers (20px)
+  // Headline 4 - Small section headers
   h5: {
-    fontSize: '1.25rem',    // 20px
+    fontFamily: "'Fraunces', serif",
+    fontSize: '1.25rem',
     fontWeight: 600,
     lineHeight: 1.2,
     letterSpacing: '0',
   },
   
-  // Smallest heading (16px)
+  // Smallest heading
   h6: {
-    fontSize: '1rem',       // 16px
+    fontFamily: "'Fraunces', serif",
+    fontSize: '1rem',
     fontWeight: 600,
     lineHeight: 1.2,
     letterSpacing: '0',
   },
   
-  // Body - Conversational UI, chat messages (16px)
+  // Body - Main content
   body1: {
-    fontSize: '1rem',       // 16px
+    fontFamily: "'JetBrains Mono', monospace", // semantic.body.main.font
+    fontSize: '1rem',       // semantic.body.main.size
     fontWeight: 400,
     lineHeight: 1.5,
     letterSpacing: '0',
   },
   
-  // Small body - Secondary info, timestamps (14px)
+  // Small body - Secondary info
   body2: {
-    fontSize: '0.875rem',   // 14px
+    fontFamily: "'JetBrains Mono', monospace", // semantic.body.small.font
+    fontSize: '0.875rem',   // semantic.body.small.size
     fontWeight: 400,
     lineHeight: 1.5,
     letterSpacing: '0',
@@ -75,43 +83,47 @@ export const typography: TypographyOptions = {
   
   // Button text
   button: {
-    fontSize: '0.875rem',   // 14px
+    fontFamily: "'JetBrains Mono', monospace", // semantic.label.button.font
+    fontSize: '0.875rem',   // semantic.label.button.size
     fontWeight: 500,
     lineHeight: 1.5,
     letterSpacing: '0.05em',
-    textTransform: 'none',  // UnmessMe uses sentence case, not uppercase
+    textTransform: 'none',  // V3: No uppercase
   },
   
-  // Caption - Micro-copy, helper text (12px)
+  // Caption - Micro-copy
   caption: {
-    fontSize: '0.75rem',    // 12px
+    fontFamily: "'JetBrains Mono', monospace",
+    fontSize: '0.75rem',
     fontWeight: 400,
     lineHeight: 1.5,
     letterSpacing: '0',
   },
   
-  // Overline - Labels, chips (12px)
+  // Overline - Labels, chips
   overline: {
-    fontSize: '0.75rem',    // 12px
+    fontFamily: "'JetBrains Mono', monospace",
+    fontSize: '0.75rem',
     fontWeight: 500,
     lineHeight: 1.5,
     letterSpacing: '0.05em',
     textTransform: 'uppercase',
   },
   
-  // Subtitle variants for additional hierarchy
+  // Subtitle variants
   subtitle1: {
-    fontSize: '1rem',       // 16px
+    fontFamily: "'JetBrains Mono', monospace",
+    fontSize: '1rem',
     fontWeight: 500,
     lineHeight: 1.5,
     letterSpacing: '0',
   },
   
   subtitle2: {
-    fontSize: '0.875rem',   // 14px
+    fontFamily: "'JetBrains Mono', monospace",
+    fontSize: '0.875rem',
     fontWeight: 500,
     lineHeight: 1.5,
     letterSpacing: '0',
   },
 };
-

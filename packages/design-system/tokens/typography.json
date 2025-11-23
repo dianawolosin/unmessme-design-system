@@ -1,116 +1,62 @@
 {
   "$schema": "https://design-tokens.org/schemas/1.0/schema.json",
   "typography": {
-    "fontFamily": {
-      "sans": {
-        "$value": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif",
-        "$type": "fontFamily",
-        "$description": "Primary sans-serif stack. Inter for friendly, approachable tone. Falls back to system fonts."
+    "primitive": {
+      "fontFamily": {
+        "serif": { "$value": "'Fraunces', serif", "$type": "fontFamily" },
+        "mono": { "$value": "'JetBrains Mono', monospace", "$type": "fontFamily" },
+        "sans": { "$value": "'Inter', sans-serif", "$type": "fontFamily" }
       },
-      "mono": {
-        "$value": "'Fira Code', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Courier New, monospace",
-        "$type": "fontFamily",
-        "$description": "Monospace for code snippets, technical metadata. Optional for future use."
+      "fontSize": {
+        "xs": { "$value": "0.75rem", "$type": "dimension" },
+        "sm": { "$value": "0.875rem", "$type": "dimension" },
+        "md": { "$value": "1rem", "$type": "dimension" },
+        "lg": { "$value": "1.25rem", "$type": "dimension" },
+        "xl": { "$value": "1.5rem", "$type": "dimension" },
+        "2xl": { "$value": "2.5rem", "$type": "dimension" },
+        "3xl": { "$value": "3.5rem", "$type": "dimension" }
+      },
+      "fontWeight": {
+        "regular": { "$value": "400", "$type": "fontWeight" },
+        "medium": { "$value": "500", "$type": "fontWeight" },
+        "bold": { "$value": "700", "$type": "fontWeight" }
       }
     },
-    "fontSize": {
-      "display": {
-        "$value": "3.5rem",
-        "$type": "dimension",
-        "$description": "Display / H1 - Hero statements, major headings. 56px base size."
-      },
-      "h1": {
-        "$value": "2.5rem",
-        "$type": "dimension",
-        "$description": "Headline 1 - Main section titles. 40px base size."
-      },
-      "h2": {
-        "$value": "2rem",
-        "$type": "dimension",
-        "$description": "Headline 2 - Sub-section titles. 32px base size."
-      },
-      "h3": {
-        "$value": "1.5rem",
-        "$type": "dimension",
-        "$description": "Headline 3 - Card titles, problem titles. 24px base size."
-      },
-      "h4": {
-        "$value": "1.25rem",
-        "$type": "dimension",
-        "$description": "Headline 4 - Small section headers. 20px base size."
+    "semantic": {
+      "heading": {
+        "display": { 
+          "font": { "$value": "{typography.primitive.fontFamily.serif}", "$type": "fontFamily" },
+          "size": { "$value": "{typography.primitive.fontSize.3xl}", "$type": "dimension" },
+          "weight": { "$value": "{typography.primitive.fontWeight.bold}", "$type": "fontWeight" }
+        },
+        "card": {
+          "font": { "$value": "{typography.primitive.fontFamily.serif}", "$type": "fontFamily" },
+          "size": { "$value": "{typography.primitive.fontSize.xl}", "$type": "dimension" },
+          "weight": { "$value": "{typography.primitive.fontWeight.bold}", "$type": "fontWeight" }
+        }
       },
       "body": {
-        "$value": "1rem",
-        "$type": "dimension",
-        "$description": "Body text - Conversational UI, chat messages, descriptions. 16px base size."
-      },
-      "body-sm": {
-        "$value": "0.875rem",
-        "$type": "dimension",
-        "$description": "Small body text - Secondary info, timestamps. 14px base size."
+        "main": {
+          "font": { "$value": "{typography.primitive.fontFamily.mono}", "$type": "fontFamily" },
+          "size": { "$value": "{typography.primitive.fontSize.md}", "$type": "dimension" }
+        },
+        "small": {
+          "font": { "$value": "{typography.primitive.fontFamily.mono}", "$type": "fontFamily" },
+          "size": { "$value": "{typography.primitive.fontSize.sm}", "$type": "dimension" }
+        }
       },
       "label": {
-        "$value": "0.75rem",
-        "$type": "dimension",
-        "$description": "Labels - Chips, buttons, metadata, micro-copy. 12px base size."
-      }
-    },
-    "fontWeight": {
-      "regular": {
-        "$value": "400",
-        "$type": "fontWeight",
-        "$description": "Regular weight for body text, conversational content."
-      },
-      "medium": {
-        "$value": "500",
-        "$type": "fontWeight",
-        "$description": "Medium weight for emphasis, buttons, labels."
-      },
-      "semibold": {
-        "$value": "600",
-        "$type": "fontWeight",
-        "$description": "Semibold for subheadings, important UI elements."
-      },
-      "bold": {
-        "$value": "700",
-        "$type": "fontWeight",
-        "$description": "Bold for headings, strong emphasis."
-      }
-    },
-    "lineHeight": {
-      "tight": {
-        "$value": "1.2",
-        "$type": "number",
-        "$description": "Tight line height for headings, display text. 120% of font size."
-      },
-      "normal": {
-        "$value": "1.5",
-        "$type": "number",
-        "$description": "Normal line height for body text, conversational content. 150% for readability."
-      },
-      "relaxed": {
-        "$value": "1.75",
-        "$type": "number",
-        "$description": "Relaxed line height for longer text blocks. 175% for comfortable reading."
-      }
-    },
-    "letterSpacing": {
-      "tight": {
-        "$value": "-0.02em",
-        "$type": "dimension",
-        "$description": "Tight letter spacing for large headings, display text."
-      },
-      "normal": {
-        "$value": "0",
-        "$type": "dimension",
-        "$description": "Normal letter spacing for body text."
-      },
-      "wide": {
-        "$value": "0.05em",
-        "$type": "dimension",
-        "$description": "Wide letter spacing for labels, all-caps text, emphasis."
+        "tag": {
+          "font": { "$value": "{typography.primitive.fontFamily.mono}", "$type": "fontFamily" },
+          "size": { "$value": "12px", "$type": "dimension", "$description": "Fixed 12px for tags" },
+          "weight": { "$value": "{typography.primitive.fontWeight.bold}", "$type": "fontWeight" }
+        },
+        "button": {
+          "font": { "$value": "{typography.primitive.fontFamily.mono}", "$type": "fontFamily" },
+          "size": { "$value": "{typography.primitive.fontSize.sm}", "$type": "dimension" },
+          "weight": { "$value": "{typography.primitive.fontWeight.bold}", "$type": "fontWeight" }
+        }
       }
     }
   }
 }
-

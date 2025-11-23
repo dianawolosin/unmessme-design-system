@@ -1,101 +1,71 @@
 {
   "$schema": "https://design-tokens.org/schemas/1.0/schema.json",
   "color": {
-    "background": {
-      "base": {
-        "$value": "#0F0F11",
-        "$type": "color",
-        "$description": "Deep Space Void - primary app background. Darker, richer, slightly cooler than standard dark mode."
+    "primitive": {
+      "slate": {
+        "900": { "$value": "#121619", "$type": "color" },
+        "800": { "$value": "#1E2327", "$type": "color" },
+        "700": { "$value": "#2C3338", "$type": "color" }
       },
-      "surface": {
-        "$value": "rgba(30, 30, 35, 0.6)",
-        "$type": "color",
-        "$description": "Midnight Glass - translucent surface for cards. Needs backdrop-filter blur to work."
+      "bone": {
+        "100": { "$value": "#E0E1DD", "$type": "color" },
+        "200": { "$value": "#C4C5C1", "$type": "color" }
+      },
+      "seafoam": {
+        "main": { "$value": "#2A9D8F", "$type": "color" },
+        "light": { "$value": "#4DC0B2", "$type": "color" },
+        "dark": { "$value": "#1F7A70", "$type": "color" }
+      },
+      "terracotta": {
+        "main": { "$value": "#E07A5F", "$type": "color" },
+        "dark": { "$value": "#B3614C", "$type": "color" }
+      },
+      "iris": {
+        "main": { "$value": "#8187DC", "$type": "color" },
+        "dark": { "$value": "#676BB0", "$type": "color" }
+      },
+      "charcoal": {
+        "main": { "$value": "#3D405B", "$type": "color" }
       }
     },
-    "surface": {
-      "card": {
-        "$value": "rgba(255, 255, 255, 0.03)",
-        "$type": "color",
-        "$description": "Glass card surface - very subtle white tint. Requires blur and border for definition."
+    "semantic": {
+      "bg": {
+        "canvas": { 
+          "$value": "{color.primitive.slate.900}", 
+          "$type": "color",
+          "$description": "Main app background (Gunmetal Void)"
+        },
+        "surface": {
+          "$value": "rgba(30, 35, 39, 0.6)", 
+          "$type": "color",
+          "$description": "Base glass surface color"
+        }
       },
-      "elevated": {
-        "$value": "rgba(255, 255, 255, 0.08)",
-        "$type": "color",
-        "$description": "Elevated glass surface for modals/hover. Slightly more opaque."
-      }
-    },
-    "accent": {
-      "coral": {
-        "$value": "#FF6B6B",
-        "$type": "color",
-        "$description": "Coral Glow - warmth, friendliness. Used for mesh gradients and glow effects."
+      "text": {
+        "primary": { "$value": "{color.primitive.bone.100}", "$type": "color" },
+        "secondary": { "$value": "rgba(224, 225, 221, 0.6)", "$type": "color" },
+        "disabled": { "$value": "rgba(224, 225, 221, 0.3)", "$type": "color" },
+        "inverse": { "$value": "{color.primitive.slate.900}", "$type": "color" }
       },
-      "sky": {
-        "$value": "#4DA3FF",
-        "$type": "color",
-        "$description": "Sky Blue - primary action glow. Electric and optimistic."
+      "action": {
+        "primary": { 
+          "$value": "{color.primitive.seafoam.main}", 
+          "$type": "color",
+          "$description": "Primary action color (Unmess Button)"
+        },
+        "hover": { 
+          "$value": "{color.primitive.seafoam.dark}", 
+          "$type": "color" 
+        }
       },
-      "mint": {
-        "$value": "#4ECDC4",
-        "$type": "color",
-        "$description": "Electric Mint - success and 'unmessing' energy."
+      "status": {
+        "urgent": { "$value": "{color.primitive.terracotta.main}", "$type": "color" },
+        "analysis": { "$value": "{color.primitive.iris.main}", "$type": "color" },
+        "success": { "$value": "{color.primitive.seafoam.main}", "$type": "color" }
       },
-      "lilac": {
-        "$value": "#A663CC",
-        "$type": "color",
-        "$description": "Hype Lilac - deep thoughts and magic moments."
-      },
-      "citrus": {
-        "$value": "#FFD93D",
-        "$type": "color",
-        "$description": "Sunshine - high energy sparks and highlights."
-      }
-    },
-    "text": {
-      "primary": {
-        "$value": "#FFFFFF",
-        "$type": "color",
-        "$description": "Primary text - pure white for maximum contrast on glass."
-      },
-      "secondary": {
-        "$value": "rgba(255, 255, 255, 0.7)",
-        "$type": "color",
-        "$description": "Secondary text - translucent white instead of grey."
-      },
-      "disabled": {
-        "$value": "rgba(255, 255, 255, 0.3)",
-        "$type": "color",
-        "$description": "Disabled text - ghosted."
-      },
-      "on-accent": {
-        "$value": "#0F0F11",
-        "$type": "color",
-        "$description": "Text on bright accents - dark void color for contrast."
-      }
-    },
-    "border": {
-      "glass": {
-        "$value": "rgba(255, 255, 255, 0.08)",
-        "$type": "color",
-        "$description": "Subtle glass edge definition."
-      },
-      "highlight": {
-        "$value": "rgba(255, 255, 255, 0.2)",
-        "$type": "color",
-        "$description": "Top edge highlight for glass cards."
-      }
-    },
-    "gradient": {
-      "aurora": {
-        "$value": "radial-gradient(circle at 50% 0%, rgba(77, 163, 255, 0.15) 0%, rgba(15, 15, 17, 0) 70%)",
-        "$type": "gradient",
-        "$description": "Top-down blue glow for the void."
-      },
-      "glass-shine": {
-        "$value": "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)",
-        "$type": "gradient",
-        "$description": "Standard glass surface gradient."
+      "border": {
+        "subtle": { "$value": "rgba(255, 255, 255, 0.08)", "$type": "color" },
+        "highlight": { "$value": "rgba(255, 255, 255, 0.15)", "$type": "color" }
       }
     }
   }

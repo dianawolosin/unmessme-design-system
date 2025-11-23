@@ -1,116 +1,127 @@
 import { Components, Theme } from '@mui/material/styles';
+import { spacingTokens } from './spacing';
 
 /**
- * UnmessMe MUI Component Overrides
+ * UnmessMe MUI Component Overrides (V3: Digital Noir)
  * 
- * Applies design tokens (radius, elevation, spacing) to MUI components
- * Creates the signature UnmessMe look: bento cards, pill chips, soft shadows
+ * Refactored to use Semantic Tokens (theme.palette.semantic.*)
+ * Applies V3 physics: tight masking tape, smoked glass, mechanical buttons.
  */
 export const components: Components<Theme> = {
-  // Card - Bento-style problem cards
+  // Card - Smoked Glass Panels
   MuiCard: {
     defaultProps: {
       elevation: 0,  // We control shadows manually
     },
     styleOverrides: {
       root: ({ theme }) => ({
-        borderRadius: 16,  // lg radius from tokens
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.6)',  // md elevation
-        border: `1px solid ${theme.palette.divider}`,
+        borderRadius: theme.shape.borderRadius * 2, // 16px (lg)
+        backgroundColor: theme.palette.semantic.bg.surface,
+        boxShadow: 'none', // Default flat, custom shadow applied in component
+        border: `1px solid ${theme.palette.semantic.border.subtle}`,
       }),
     },
   },
   
-  // Button - Conversational actions, CTAs
+  // Button - Mechanical Switches
   MuiButton: {
     defaultProps: {
       disableElevation: true,
     },
     styleOverrides: {
-      root: {
-        borderRadius: 8,  // md radius
-        textTransform: 'none',  // Sentence case, not uppercase
-        fontWeight: 500,
+      root: ({ theme }) => ({
+        borderRadius: theme.shape.borderRadius, // 8px (md)
+        textTransform: 'none',  // Sentence case
+        fontWeight: 600,
+        fontFamily: theme.typography.button.fontFamily,
         padding: '10px 20px',
-        minHeight: 48,  // Touch target minimum
-      },
-      contained: {
-        boxShadow: 'none',
+        minHeight: spacingTokens.touchTarget, // 48px
+        letterSpacing: '0.05em',
+      }),
+      contained: ({ theme }) => ({
+        boxShadow: 'none', // Flat
         '&:hover': {
-          boxShadow: '0 0 20px 0 rgba(77, 163, 255, 0.2)',  // Subtle glow
+          backgroundColor: theme.palette.semantic.action.hover,
+          boxShadow: 'none', // No hover shadow in V3
         },
-      },
+      }),
       outlined: ({ theme }) => ({
-        borderColor: theme.palette.divider,
+        borderColor: theme.palette.semantic.border.subtle,
+        color: theme.palette.semantic.text.primary,
+        '&:hover': {
+          borderColor: theme.palette.semantic.action.primary,
+          backgroundColor: 'rgba(42, 157, 143, 0.05)', // Subtle seafoam tint
+        },
       }),
     },
   },
   
-  // Fab - Unmess Me button, circular actions
+  // Fab - The Launch Switch
   MuiFab: {
     styleOverrides: {
-      root: {
-        boxShadow: '0 8px 24px 0 rgba(0, 0, 0, 0.8)',  // xl elevation
+      root: ({ theme }) => ({
+        boxShadow: 'none', // Flat V3
+        backgroundColor: theme.palette.semantic.action.primary,
+        color: theme.palette.semantic.text.inverse,
         '&:hover': {
-          boxShadow: '0 8px 24px 0 rgba(77, 163, 255, 0.4)',  // Sky blue glow
+          backgroundColor: theme.palette.semantic.action.hover,
+          boxShadow: 'none', 
         },
-      },
+      }),
     },
   },
   
-  // Chip - Tag chips, filter chips (pill-shaped)
+  // Chip - Masking Tape Tags
   MuiChip: {
     styleOverrides: {
-      root: {
-        borderRadius: 9999,  // pill shape
-        height: 32,
-        minHeight: 48,  // Touch target (with padding/margin)
-        fontWeight: 500,
-        fontSize: '0.875rem',
-      },
-      filled: {
-        boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.5)',  // sm elevation
+      root: ({ theme }) => ({
+        borderRadius: 2, // 2px (xs) - Tight masking tape
+        height: 24, // Tight height
+        minHeight: 'unset',
+        fontWeight: 600,
+        fontSize: '0.75rem', // 12px
+        fontFamily: theme.typography.fontFamily, // JetBrains Mono via theme
+      }),
+      filled: ({ theme }) => ({
+        backgroundColor: theme.palette.semantic.bg.surface,
+        border: `1px solid ${theme.palette.semantic.border.subtle}`,
+        boxShadow: 'none',
+      }),
+      label: {
+        paddingLeft: 6,
+        paddingRight: 6,
       },
     },
   },
   
-  // Paper - Surfaces, elevated containers
+  // Paper - Surfaces
   MuiPaper: {
     defaultProps: {
       elevation: 0,
     },
     styleOverrides: {
       root: ({ theme }) => ({
-        backgroundImage: 'none',  // Remove MUI default gradient
-        backgroundColor: theme.palette.background.paper,
+        backgroundImage: 'none',
+        backgroundColor: theme.palette.semantic.bg.surface,
       }),
-      rounded: {
-        borderRadius: 16,  // lg radius
-      },
-      elevation1: {
-        boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.6)',  // md elevation
-      },
-      elevation2: {
-        boxShadow: '0 4px 16px 0 rgba(0, 0, 0, 0.7)',  // lg elevation
-      },
-      elevation3: {
-        boxShadow: '0 8px 24px 0 rgba(0, 0, 0, 0.8)',  // xl elevation
-      },
+      rounded: ({ theme }) => ({
+        borderRadius: theme.shape.borderRadius * 2, // 16px
+      }),
     },
   },
   
-  // Dialog - Modals, clarifying questions
+  // Dialog - Modals
   MuiDialog: {
     styleOverrides: {
-      paper: {
-        borderRadius: 16,  // lg radius
-        boxShadow: '0 8px 24px 0 rgba(0, 0, 0, 0.8)',  // xl elevation
-      },
+      paper: ({ theme }) => ({
+        borderRadius: theme.shape.borderRadius * 2, // 16px
+        boxShadow: '0 20px 50px -10px rgba(0, 0, 0, 0.7)', // Deep shadow for modals
+        border: `1px solid ${theme.palette.semantic.border.subtle}`,
+      }),
     },
   },
   
-  // TextField - Input fields, chat input
+  // TextField - Input fields
   MuiTextField: {
     defaultProps: {
       variant: 'outlined',
@@ -120,25 +131,24 @@ export const components: Components<Theme> = {
   MuiOutlinedInput: {
     styleOverrides: {
       root: ({ theme }) => ({
-        borderRadius: 8,  // md radius
+        borderRadius: theme.shape.borderRadius, // 8px
+        backgroundColor: 'rgba(0, 0, 0, 0.2)', // Darker input bg
+        '& .MuiOutlinedInput-notchedOutline': {
+          borderColor: theme.palette.semantic.border.subtle,
+        },
+        '&:hover .MuiOutlinedInput-notchedOutline': {
+          borderColor: theme.palette.semantic.border.highlight,
+        },
         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-          borderColor: theme.palette.primary.main,
-          borderWidth: 2,
-          boxShadow: '0 0 0 3px rgba(77, 163, 255, 0.4)',  // Focus glow
+          borderColor: theme.palette.semantic.action.primary,
+          borderWidth: 1, // Thin crisp border
+          boxShadow: `0 0 0 2px ${theme.palette.semantic.action.primary}33`, // Subtle focus ring
         },
       }),
       input: {
-        minHeight: 48,  // Touch target
-      },
-    },
-  },
-  
-  // IconButton - Circular action buttons
-  MuiIconButton: {
-    styleOverrides: {
-      root: {
-        minWidth: 48,  // Touch target
-        minHeight: 48,
+        minHeight: 'unset',
+        padding: '12px 14px',
+        color: theme.palette.semantic.text.primary,
       },
     },
   },
@@ -150,21 +160,22 @@ export const components: Components<Theme> = {
     },
     styleOverrides: {
       root: ({ theme }) => ({
-        backgroundColor: theme.palette.background.default,
-        borderBottom: `1px solid ${theme.palette.divider}`,
+        backgroundColor: theme.palette.semantic.bg.canvas,
+        borderBottom: `1px solid ${theme.palette.semantic.border.subtle}`,
       }),
     },
   },
   
-  // Tooltip - Helper text
+  // Tooltip
   MuiTooltip: {
     styleOverrides: {
-      tooltip: {
-        borderRadius: 8,  // md radius
-        fontSize: '0.875rem',
-        padding: '8px 12px',
-      },
+      tooltip: ({ theme }) => ({
+        borderRadius: 4, // 4px (sm)
+        fontSize: '0.75rem',
+        backgroundColor: theme.palette.semantic.bg.surface,
+        border: `1px solid ${theme.palette.semantic.border.subtle}`,
+        color: theme.palette.semantic.text.primary,
+      }),
     },
   },
 };
-

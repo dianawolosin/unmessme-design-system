@@ -1,142 +1,140 @@
-# UnmessMe – UI Blueprint (V2: Frosted Chaos & Playful Physics)
+# UnmessMe – UI Blueprint (V3: Midnight Terminal & Digital Noir)
 
 ## 1. Visual North Star
 
-**"The Magical Messy Desk."**
+**"The Midnight Terminal."**
 
-UnmessMe is not a productivity tool; it is a **sentient, playful void**. The visual identity transforms "chaos" (floating, tilted, slightly messy elements) into "clarity" (snapping into grids, glowing with progress) through user interaction.
+UnmessMe is not a toy; it is a **chic, high-end control room** for life’s chaos. The visual identity shifts from "magical playground" to "cinematic utility." It feels like a late-night coding session, an A24 movie title sequence, or a receipt from a very expensive therapist.
 
 The vibe is:
-* **Ethereal Dark Mode:** Deep void backgrounds with slow-moving, multi-colored "aurora" blobs.
-* **Frosted Glass (Glassmorphism):** UI elements are translucent panes that float above the void.
-* **Tactile Physics:** Buttons squish, cards tilt, and tags feel like stickers.
-* **Optimistic Energy:** High-saturation glows against deep charcoal.
+* **Adult Satire:** Clinical, precise, and slightly detached.
+* **Digital Noir:** Deep, moody backgrounds with synthesized, "expensive" colors.
+* **Analog Texture:** Film grain and noise prevent the UI from feeling like "plastic app design."
+* **Organized Chaos:** Elements are scattered like receipts on a desk, but snap to a rigid grid when analyzed.
 
 ---
 
-## 2. Color System (Deep Void & Neon Glows)
+## 2. Semantic Token System (Triadic Harmony)
 
-We do not use flat colors. We use **light sources**.
+We strictly avoid hardcoded hex values. We use a **Semantic Token System** to ensure consistency and flexibility.
 
-### 2.1 The Void (Backgrounds)
-Instead of solid grey, we use deep, rich darks to make the "glass" pop.
-* **Deep Space:** `#0F0F11` (Main Background)
-* **Midnight Glass:** `rgba(30, 30, 35, 0.6)` (Card Surface)
-* **Scrim:** `rgba(0,0,0,0.4)` (Text protection layers)
+### 2.1 The Canvas (Digital Noir)
+* **`semantic.bg.canvas`** (Base): Main app background. Deep, warm slate.
+* **`semantic.bg.surface`** (Layer 1): Smoked Glass card surface. Dark, moody transparency.
+* **`semantic.text.primary`** (Content): Bone White. Never pure white.
+* **`semantic.text.inverse`** (Contrast): Dark Gunmetal (for text on bright buttons).
 
-### 2.2 The Energy (Gradients & Glows)
-Accent colors are rarely used as solid fills. They are used as **mesh gradients** or **drop shadows**.
-* **Coral Glow:** `#FF6B6B` → Used for "Urgency" and warm emotions.
-* **Electric Mint:** `#4ECDC4` → Used for "Unmessing" and success states.
-* **Hype Lilac:** `#A663CC` → Used for "Deep Thoughts" and introspection.
-* **Sunshine:** `#FFD93D` → Highlights and sparks.
+### 2.2 The Triadic Accents (Status & Action)
+Used for tags, glows, and highlights. Never use "Red" or "Green" directly.
 
-**Rule:** Every card has a subtle colored `box-shadow` matching its primary tag color to create a "bioluminescent" effect.
+* **`semantic.status.urgent`** (Terracotta): Alert / Urgency. Earthy, grounded.
+* **`semantic.status.analysis`** (Iris): Analysis / Depth. Introspective, electric purple-blue.
+* **`semantic.action.primary`** (Seafoam): Action / Go. Rich, calming, sophisticated.
+* **`semantic.action.hover`** (Seafoam Dark): Interactive state.
 
----
-
-## 3. Shape & Geometry
-
-### 3.1 "The Stack" Aesthetic
-* **Tilted Interaction:** Elements shouldn't always be perfectly straight.
-    * **Rest State:** Subtle random rotation (`-1deg` to `1deg`).
-    * **Hover State:** Snaps to `0deg` and scales up (`1.02x`).
-    * **Metaphor:** It feels like sorting through a pile of papers.
-* **Super-Rounded Corners:** `borderRadius: 24px` (Cards) to `32px` (Buttons). No sharp edges anywhere. The UI should feel safe to touch.
-
-### 3.2 "Sticker" Tags
-Tags are not corporate chips. They look like stickers stuck onto the glass.
-* White/Light border (`1px solid rgba(255,255,255,0.2)`).
-* Slight drop shadow (`0 2px 4px rgba(0,0,0,0.2)`).
-* Vibrant gradient backgrounds.
+**Rule:** Gradients are subtle "fog" effects, never harsh linear shifts.
 
 ---
 
-## 4. Material UI Component Mappings (The "Vibe" Overrides)
+## 3. Typography (Clinical vs. Editorial)
 
-The MCP must generate React code that heavily overrides standard MUI styles.
+Typography is the primary driver of the "Adult Satire" tone. We use contrast to tell the story.
 
-### 4.1 Glass Card (`ProblemCard`)
-Replaces the standard MUI Card.
-* **Prop:** `backdropFilter: 'blur(16px)'`
-* **Prop:** `background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)'`
-* **Border:** `1px solid rgba(255, 255, 255, 0.08)`
-* **Shadow:** `0 8px 32px 0 rgba(0, 0, 0, 0.3)`
-* **Action:** Uses Framer Motion for the "tilt-to-straight" hover effect.
+### 3.1 The Voice (Headlines)
+* **Token:** `semantic.heading.display`
+* **Font:** **Fraunces** (Italic/Display) or **Space Grotesk**.
+* **Vibe:** Editorial, confident, slightly sarcastic.
+* **Usage:** Big problem titles, "Unmess Me" prompts.
 
-### 4.2 Living FAB (`UnmessButton`)
-Replaces the standard CTA.
-* **Animation:** Uses a "breathing" shadow effect (glow expands and contracts).
-* **Press State:** "Squishes" down (`scale: 0.9`) on click (Spring physics).
-* **Gradient:** Horizontal gradient (Mint → Blue).
-
-### 4.3 Chat Bubbles
-* **User:** Translucent white glass (`rgba(255,255,255,0.1)`).
-* **UnmessMe:** Gradient glass (Lilac tint).
-* **Shape:** `borderRadius: 20px`, but `4px` on the corner originating the text.
+### 3.2 The System (Data & Controls)
+* **Token:** `semantic.body.main` / `semantic.label.button`
+* **Font:** **JetBrains Mono**, **Space Mono**, or **IBM Plex Mono**.
+* **Vibe:** Technical, receipt-like, diagnostic, utilitarian.
+* **Usage:** Tags, stress levels, button labels, dashboard stats.
+* **Effect:** Makes the user's emotional breakdown look like a debug log.
 
 ---
 
-## 5. Typography
+## 4. Shape & Texture
 
-We mix functional clarity with editorial personality.
+### 4.1 "Masking Tape" Tags
+Tags are no longer pill-shaped bubbles.
+* **Token:** `semantic.radius.xs` (2px)
+* **Shape:** Rectangular with very slight radius.
+* **Visual:** Looks like a piece of masking tape or a file folder label stuck to the screen.
+* **Style:** `text-transform: lowercase` (Monospace font).
 
-* **Headlines (H1, H2):** **Fraunces** (Soft Serif) or **Space Grotesk**. Gives it that "zine" or "editorial" feel.
-* **Body / UI:** **Inter** or **DM Sans**. Clean, legible, high x-height.
-* **Tone:** Large, confident text. Don't hide the mess in small print.
+### 4.2 Smoked Glass Cards
+* **Token:** `semantic.radius.lg` (16px)
+* **Visual:** Tightened radius. No more "balloon" corners.
+* **Texture:** Must include a **Noise / Film Grain** overlay (CSS `background-image` or pseudo-element) to kill the digital sheen.
+* **Border:** `semantic.border.subtle` (1px solid faint white).
 
----
-
-## 6. Motion & Physics Principles
-
-Motion is the primary way we communicate "Unmessing."
-
-### 6.1 The "Pop"
-When a task is completed or a problem is categorized:
-* **Effect:** Confetti explosion of tiny geometric shapes (triangles, circles).
-* **Physics:** Spring-based, bouncy. No linear ease-in-out.
-
-### 6.2 Drifting
-Background elements (the "Aurora Blobs") must slowly drift and morph.
-* **Speed:** Very slow (20s duration loops).
-* **Effect:** Creates a feeling of a "living" background.
-
-### 6.3 Reduced Motion (Accessibility)
-* If `prefers-reduced-motion` is true:
-    * Disable card tilts.
-    * Stop background drifting.
-    * Change "squish" buttons to simple opacity changes.
+### 4.3 The Scatter (Layout)
+* **Rest State:** Cards have slight, random rotations (`-1.5deg` to `1.5deg`). They look like a messy stack of Polaroids.
+* **Hover State:** Snaps to grid (`0deg`), **NO scale**, border brightens.
+* **Metaphor:** Sorting through the pile.
 
 ---
 
-## 7. Layout Strategy
+## 5. Material UI Component Mappings (The "Terminal" Overrides)
 
-### 7.1 The "Floating" Dashboard
-Instead of a rigid grid:
-* Use a **Masonry** layout where cards interlock.
-* Ample negative space (The Void).
-* Content stays centered; background provides the atmosphere.
+The MCP must generate React code that overrides standard MUI defaults with this specific aesthetic using **Semantic Tokens**.
 
-### 7.2 Z-Index Layering
-1.  **Deep Space (Layer 0):** The dark background.
-2.  **Aurora (Layer 1):** Blurry colored blobs.
-3.  **Glass (Layer 2):** Cards and Interface.
-4.  **Light (Layer 3):** Text and Buttons.
+### 5.1 Card Component (`ProblemCard`)
+* **Base:** MUI `Card`
+* **Overrides:**
+    * `backdropFilter: 'blur(20px)'`
+    * `backgroundColor: theme.palette.semantic.bg.surface`
+    * `border: 1px solid theme.palette.semantic.border.subtle`
+    * `borderRadius: theme.palette.semantic.radius.lg` (16px)
+    * `boxShadow`: **None** (Flat by default, per V3 Flat UI rule).
+
+### 5.2 Button Component (`UnmessButton`)
+* **Base:** MUI `Button` (Variant: Contained)
+* **Overrides:**
+    * **Shape:** `theme.palette.semantic.radius.md` (8px).
+    * **Font:** Monospace, Normal Case (No Uppercase).
+    * **Background:** `theme.palette.semantic.action.primary`.
+    * **Hover:** Standard Material Darken (No Scale, No Shadow).
+    * **Shadow:** **None** (Flat mechanical feel).
+
+### 5.3 Tags (`TagChip`)
+* **Base:** MUI `Chip`
+* **Overrides:**
+    * **Shape:** `theme.palette.semantic.radius.xs` (2px) - Tape style.
+    * **Font:** Monospace.
+    * **Height:** Compact (`20px` small / `24px` medium).
+    * **Background:** `theme.palette.semantic.bg.surface` with colored border.
 
 ---
 
-## 8. Guardrails for "Vibe" Generation
+## 6. Motion & Physics
+
+### 6.1 Mechanical Snapping
+Motion should feel **precise and mechanical**, not "bouncy."
+* **Ease:** `cubic-bezier(0.2, 0.8, 0.2, 1)` (Snappy).
+* **Duration:** Fast (`0.2s`).
+* **Interactions:** Hover states should feel like a switch flipping or a lens focusing.
+
+### 6.2 Drifting Smoke
+Background elements (fog/glows) move very slowly, creating a "breathing" atmosphere behind the crisp UI.
+
+---
+
+## 7. Guardrails for "Noir" Generation
 
 The MCP must ensure:
-1.  **Legibility:** Glassmorphism can kill contrast. Always verify text contrast against the *darkest possible* value of the blur.
-2.  **Performance:** Do not over-use `backdrop-filter` on mobile views. Fall back to solid semi-transparent colors if needed.
-3.  **No "Jiggle" Overload:** Only interactive elements (cards, buttons) should move on hover. Text should remain stable.
+1.  **Contrast Safety:** Monospace fonts can be thin. Ensure weight is at least `500` or `600` for legibility on dark backgrounds.
+2.  **Noise Management:** The film grain texture should be subtle (`opacity: 0.03`), not distracting.
+3.  **Color discipline:** NEVER use pure Red, Blue, or Yellow. Always map to `semantic.status.*` tokens.
 
 ---
 
-## 9. Summary for MCP
+## 8. Summary for MCP
 
-When generating UI code, the MCP acts as a **Creative Coder**.
-* **Don't use:** `Paper`, `elevation={1}`, gray backgrounds.
-* **Do use:** `backdropFilter`, `linear-gradient`, `framer-motion`, `borderRadius: 24px`.
-* **Goal:** Make it look like a sci-fi magical girl's inventory screen.
+When generating UI code:
+* **Think:** "High-End Control Terminal."
+* **Fonts:** Headings = Editorial; Data = Monospace.
+* **Colors:** Use `semantic.*` tokens exclusively.
+* **Physics:** Smoked glass, masking tape, mechanical snapping.
