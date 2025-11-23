@@ -145,11 +145,11 @@ export const components: Components<Theme> = {
           boxShadow: `0 0 0 2px ${theme.palette.semantic.action.primary}33`, // Subtle focus ring
         },
       }),
-      input: {
+      input: ({ theme }) => ({
         minHeight: 'unset',
         padding: '12px 14px',
         color: theme.palette.semantic.text.primary,
-      },
+      }),
     },
   },
   
