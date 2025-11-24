@@ -1,0 +1,62 @@
+{
+  "$schema": "https://design-tokens.org/schemas/1.0/schema.json",
+  "typography": {
+    "primitive": {
+      "fontFamily": {
+        "serif": { "$value": "'Fraunces', serif", "$type": "fontFamily" },
+        "mono": { "$value": "'JetBrains Mono', monospace", "$type": "fontFamily" },
+        "sans": { "$value": "'Inter', sans-serif", "$type": "fontFamily" }
+      },
+      "fontSize": {
+        "xs": { "$value": "0.75rem", "$type": "dimension" },
+        "sm": { "$value": "0.875rem", "$type": "dimension" },
+        "md": { "$value": "1rem", "$type": "dimension" },
+        "lg": { "$value": "1.25rem", "$type": "dimension" },
+        "xl": { "$value": "1.5rem", "$type": "dimension" },
+        "2xl": { "$value": "2.5rem", "$type": "dimension" },
+        "3xl": { "$value": "3.5rem", "$type": "dimension" }
+      },
+      "fontWeight": {
+        "regular": { "$value": "400", "$type": "fontWeight" },
+        "medium": { "$value": "500", "$type": "fontWeight" },
+        "bold": { "$value": "700", "$type": "fontWeight" }
+      }
+    },
+    "semantic": {
+      "heading": {
+        "display": { 
+          "font": { "$value": "{typography.primitive.fontFamily.serif}", "$type": "fontFamily" },
+          "size": { "$value": "{typography.primitive.fontSize.3xl}", "$type": "dimension" },
+          "weight": { "$value": "{typography.primitive.fontWeight.bold}", "$type": "fontWeight" }
+        },
+        "card": {
+          "font": { "$value": "{typography.primitive.fontFamily.serif}", "$type": "fontFamily" },
+          "size": { "$value": "{typography.primitive.fontSize.xl}", "$type": "dimension" },
+          "weight": { "$value": "{typography.primitive.fontWeight.bold}", "$type": "fontWeight" }
+        }
+      },
+      "body": {
+        "main": {
+          "font": { "$value": "{typography.primitive.fontFamily.mono}", "$type": "fontFamily" },
+          "size": { "$value": "{typography.primitive.fontSize.md}", "$type": "dimension" }
+        },
+        "small": {
+          "font": { "$value": "{typography.primitive.fontFamily.mono}", "$type": "fontFamily" },
+          "size": { "$value": "{typography.primitive.fontSize.sm}", "$type": "dimension" }
+        }
+      },
+      "label": {
+        "tag": {
+          "font": { "$value": "{typography.primitive.fontFamily.mono}", "$type": "fontFamily" },
+          "size": { "$value": "12px", "$type": "dimension", "$description": "Fixed 12px for tags" },
+          "weight": { "$value": "{typography.primitive.fontWeight.bold}", "$type": "fontWeight" }
+        },
+        "button": {
+          "font": { "$value": "{typography.primitive.fontFamily.mono}", "$type": "fontFamily" },
+          "size": { "$value": "{typography.primitive.fontSize.sm}", "$type": "dimension" },
+          "weight": { "$value": "{typography.primitive.fontWeight.bold}", "$type": "fontWeight" }
+        }
+      }
+    }
+  }
+}

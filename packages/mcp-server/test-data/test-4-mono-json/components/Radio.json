@@ -1,0 +1,7 @@
+{
+  "raw_content": "---\nid: radio\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: inputs\nstatus: implemented\n---\n\n# Radio\n\nExclusive selection control.\n\n## Purpose\n\nTo select exactly one option from a list.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `color=\"primary\"` | `semantic.action.primary` |\n| `unchecked` | `semantic.border.highlight` |\n\n## API\n\n```tsx\ninterface RadioProps extends MuiRadioProps {\n  color?: 'primary' | 'secondary' | 'success' | 'default';\n}\n```\n\n## Usage\n\n```tsx\n<Radio checked={selected} onChange={handleChange} />\n```\n\n",
+  "sections": {
+    "intro": "---\nid: radio\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: inputs\nstatus: implemented\n---",
+    "Radio": "Exclusive selection control.\n\n## Purpose\n\nTo select exactly one option from a list.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `color=\"primary\"` | `semantic.action.primary` |\n| `unchecked` | `semantic.border.highlight` |\n\n## API\n\n```tsx\ninterface RadioProps extends MuiRadioProps {\n  color?: 'primary' | 'secondary' | 'success' | 'default';\n}\n```\n\n## Usage\n\n```tsx\n<Radio checked={selected} onChange={handleChange} />\n```"
+  }
+}

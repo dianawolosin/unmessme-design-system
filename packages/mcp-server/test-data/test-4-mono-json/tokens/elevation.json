@@ -1,0 +1,30 @@
+{
+  "$schema": "https://design-tokens.org/schemas/1.0/schema.json",
+  "elevation": {
+    "primitive": {
+      "flat": { "$value": "none", "$type": "shadow" },
+      "text_legibility": { "$value": "0 2px 4px rgba(0,0,0,0.3)", "$type": "shadow" },
+      "subtle": { "$value": "0 1px 2px 0 rgba(0, 0, 0, 0.5)", "$type": "shadow" },
+      "medium": { "$value": "0 4px 20px rgba(0, 0, 0, 0.4)", "$type": "shadow" },
+      "heavy": { "$value": "0 12px 40px rgba(0,0,0,0.6)", "$type": "shadow" },
+      "glow_seafoam": { "$value": "0 0 15px rgba(42, 157, 143, 0.4)", "$type": "shadow" },
+      "focus_ring": { "$value": "0 0 0 2px rgba(42, 157, 143, 0.2)", "$type": "shadow" }
+    },
+    "semantic": {
+      "text": {
+        "legibility": { "$value": "{elevation.primitive.text_legibility}", "$type": "shadow" }
+      },
+      "card": { 
+        "rest": { "$value": "{elevation.primitive.medium}", "$type": "shadow" },
+        "focused": { "$value": "{elevation.primitive.heavy}", "$type": "shadow", "$description": "Active state for ProblemCard" },
+        "hover": { "$value": "none", "$type": "shadow", "$description": "Flat on hover per V3 spec" }
+      },
+      "button": {
+        "primary": { "$value": "none", "$type": "shadow", "$description": "Flat buttons V3" },
+        "hover": { "$value": "none", "$type": "shadow" }
+      },
+      "modal": { "$value": "0 20px 50px -10px rgba(0,0,0,0.7)", "$type": "shadow" },
+      "focus_ring": { "$value": "{elevation.primitive.focus_ring}", "$type": "shadow" }
+    }
+  }
+}

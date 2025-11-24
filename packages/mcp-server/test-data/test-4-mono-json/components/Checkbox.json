@@ -1,0 +1,7 @@
+{
+  "raw_content": "---\nid: checkbox\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: inputs\nstatus: implemented\n---\n\n# Checkbox\n\nA binary selection control.\n\n## Purpose\n\nTo select one or multiple items from a set.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `color=\"primary\"` | `semantic.action.primary` |\n| `unchecked` | `semantic.border.highlight` |\n| `shape` | `radius.semantic.xs` (Sharp/Mechanical) |\n\n## API\n\n```tsx\ninterface CheckboxProps extends MuiCheckboxProps {\n  color?: 'primary' | 'secondary' | 'success' | 'default';\n}\n```\n\n## Usage\n\n```tsx\n<Checkbox checked={checked} onChange={handleChange} />\n```\n\n",
+  "sections": {
+    "intro": "---\nid: checkbox\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: inputs\nstatus: implemented\n---",
+    "Checkbox": "A binary selection control.\n\n## Purpose\n\nTo select one or multiple items from a set.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `color=\"primary\"` | `semantic.action.primary` |\n| `unchecked` | `semantic.border.highlight` |\n| `shape` | `radius.semantic.xs` (Sharp/Mechanical) |\n\n## API\n\n```tsx\ninterface CheckboxProps extends MuiCheckboxProps {\n  color?: 'primary' | 'secondary' | 'success' | 'default';\n}\n```\n\n## Usage\n\n```tsx\n<Checkbox checked={checked} onChange={handleChange} />\n```"
+  }
+}

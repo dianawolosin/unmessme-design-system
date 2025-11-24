@@ -1,0 +1,14 @@
+{
+  "$schema": "https://design-tokens.org/schemas/1.0/schema.json",
+  "border": {
+    "width": {
+      "none": { "$value": "0px", "$type": "dimension" },
+      "base": { "$value": "1px", "$type": "dimension" },
+      "thick": { "$value": "2px", "$type": "dimension" }
+    },
+    "style": {
+      "solid": { "$value": "solid", "$type": "strokeStyle" },
+      "dashed": { "$value": "dashed", "$type": "strokeStyle" }
+    }
+  }
+}

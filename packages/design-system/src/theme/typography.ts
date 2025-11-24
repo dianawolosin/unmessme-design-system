@@ -1,36 +1,36 @@
 import { TypographyOptions } from '@mui/material/styles/createTypography';
+import { tokens } from '../tokens';
 
 /**
  * UnmessMe Typography System (V3: Digital Noir)
  * 
- * Based on design-system/tokens/typography.json
- * Editorial (Fraunces) + Technical (JetBrains Mono)
+ * Automatically generated from design tokens.
  */
 export const typography: TypographyOptions = {
-  fontFamily: "'Inter', sans-serif", // Fallback global font (primitive.fontFamily.sans)
+  fontFamily: tokens.typography.primitive.fontFamily.sans,
   
   // Display - Hero statements
   h1: {
-    fontFamily: "'Fraunces', serif", // semantic.heading.display.font
-    fontSize: '3.5rem',     // semantic.heading.display.size
-    fontWeight: 700,        // semantic.heading.display.weight
+    fontFamily: tokens.typography.semantic.heading.display.font,
+    fontSize: tokens.typography.semantic.heading.display.size,
+    fontWeight: Number(tokens.typography.semantic.heading.display.weight),
     lineHeight: 1.2,
     letterSpacing: '-0.02em',
   },
   
-  // Headline 1 - Main section titles
+  // Headline 1
   h2: {
-    fontFamily: "'Fraunces', serif",
-    fontSize: '2.5rem',
-    fontWeight: 700,
+    fontFamily: tokens.typography.primitive.fontFamily.serif,
+    fontSize: tokens.typography.primitive.fontSize['2xl'],
+    fontWeight: Number(tokens.typography.primitive.fontWeight.bold),
     lineHeight: 1.2,
     letterSpacing: '-0.02em',
   },
   
-  // Headline 2 - Sub-section titles
+  // Headline 2
   h3: {
-    fontFamily: "'Fraunces', serif",
-    fontSize: '2rem',
+    fontFamily: tokens.typography.primitive.fontFamily.serif,
+    fontSize: '2rem', // Missing in tokens? Using hardcoded fallback or need to add 2rem to tokens
     fontWeight: 600,
     lineHeight: 1.2,
     letterSpacing: '-0.02em',
@@ -38,17 +38,17 @@ export const typography: TypographyOptions = {
   
   // Headline 3 - Card titles
   h4: {
-    fontFamily: "'Fraunces', serif", // semantic.heading.card.font
-    fontSize: '1.5rem',     // semantic.heading.card.size
-    fontWeight: 600,        // semantic.heading.card.weight
+    fontFamily: tokens.typography.semantic.heading.card.font,
+    fontSize: tokens.typography.semantic.heading.card.size,
+    fontWeight: Number(tokens.typography.semantic.heading.card.weight),
     lineHeight: 1.2,
     letterSpacing: '0',
   },
   
-  // Headline 4 - Small section headers
+  // Headline 4
   h5: {
-    fontFamily: "'Fraunces', serif",
-    fontSize: '1.25rem',
+    fontFamily: tokens.typography.primitive.fontFamily.serif,
+    fontSize: tokens.typography.primitive.fontSize.lg,
     fontWeight: 600,
     lineHeight: 1.2,
     letterSpacing: '0',
@@ -56,8 +56,8 @@ export const typography: TypographyOptions = {
   
   // Smallest heading
   h6: {
-    fontFamily: "'Fraunces', serif",
-    fontSize: '1rem',
+    fontFamily: tokens.typography.primitive.fontFamily.serif,
+    fontSize: tokens.typography.primitive.fontSize.md,
     fontWeight: 600,
     lineHeight: 1.2,
     letterSpacing: '0',
@@ -65,8 +65,8 @@ export const typography: TypographyOptions = {
   
   // Body - Main content
   body1: {
-    fontFamily: "'JetBrains Mono', monospace", // semantic.body.main.font
-    fontSize: '1rem',       // semantic.body.main.size
+    fontFamily: tokens.typography.semantic.body.main.font,
+    fontSize: tokens.typography.semantic.body.main.size,
     fontWeight: 400,
     lineHeight: 1.5,
     letterSpacing: '0',
@@ -74,8 +74,8 @@ export const typography: TypographyOptions = {
   
   // Small body - Secondary info
   body2: {
-    fontFamily: "'JetBrains Mono', monospace", // semantic.body.small.font
-    fontSize: '0.875rem',   // semantic.body.small.size
+    fontFamily: tokens.typography.semantic.body.small.font,
+    fontSize: tokens.typography.semantic.body.small.size,
     fontWeight: 400,
     lineHeight: 1.5,
     letterSpacing: '0',
@@ -83,18 +83,18 @@ export const typography: TypographyOptions = {
   
   // Button text
   button: {
-    fontFamily: "'JetBrains Mono', monospace", // semantic.label.button.font
-    fontSize: '0.875rem',   // semantic.label.button.size
-    fontWeight: 500,
+    fontFamily: tokens.typography.semantic.label.button.font,
+    fontSize: tokens.typography.semantic.label.button.size,
+    fontWeight: Number(tokens.typography.semantic.label.button.weight),
     lineHeight: 1.5,
     letterSpacing: '0.05em',
-    textTransform: 'none',  // V3: No uppercase
+    textTransform: 'none',
   },
   
   // Caption - Micro-copy
   caption: {
-    fontFamily: "'JetBrains Mono', monospace",
-    fontSize: '0.75rem',
+    fontFamily: tokens.typography.primitive.fontFamily.mono,
+    fontSize: tokens.typography.primitive.fontSize.xs,
     fontWeight: 400,
     lineHeight: 1.5,
     letterSpacing: '0',
@@ -102,28 +102,11 @@ export const typography: TypographyOptions = {
   
   // Overline - Labels, chips
   overline: {
-    fontFamily: "'JetBrains Mono', monospace",
-    fontSize: '0.75rem',
+    fontFamily: tokens.typography.primitive.fontFamily.mono,
+    fontSize: tokens.typography.primitive.fontSize.xs,
     fontWeight: 500,
     lineHeight: 1.5,
     letterSpacing: '0.05em',
     textTransform: 'uppercase',
-  },
-  
-  // Subtitle variants
-  subtitle1: {
-    fontFamily: "'JetBrains Mono', monospace",
-    fontSize: '1rem',
-    fontWeight: 500,
-    lineHeight: 1.5,
-    letterSpacing: '0',
-  },
-  
-  subtitle2: {
-    fontFamily: "'JetBrains Mono', monospace",
-    fontSize: '0.875rem',
-    fontWeight: 500,
-    lineHeight: 1.5,
-    letterSpacing: '0',
   },
 };

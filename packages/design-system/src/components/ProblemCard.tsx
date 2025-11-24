@@ -1,15 +1,24 @@
 import {
-  Card,
   CardContent,
   CardActions,
   Typography,
-  Button,
   Box,
   Stack,
   useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import { TagChip, TAG_ACCENT_COLORS, getRotatedAccentColor } from './TagChip';
+import { Tag, TagProps } from './Tag';
+import { Surface } from './Surface';
+import { Button } from './Button';
+import { tokens } from '../tokens';
+
+/**
+ * Helper function to rotate through accent colors
+ */
+export function getRotatedAccentColor(index: number): TagProps['color'] {
+  const colors: TagProps['color'][] = ['urgent', 'analysis', 'success', 'neutral'];
+  return colors[index % colors.length];
+}
 
 /**
  * Props for ProblemCard component
@@ -37,10 +46,9 @@ export interface ProblemCardProps {
 
   /**
    * Accent color variant for card styling
-   * Rotates through: coral, sky, mint, lilac, citrus
-   * @default "coral"
+   * @default "urgent"
    */
-  accent?: keyof typeof TAG_ACCENT_COLORS;
+  accent?: 'urgent' | 'analysis' | 'success' | 'neutral';
 
   /**
    * Primary action handler - triggers "Unmess Me" flow
@@ -86,7 +94,7 @@ export function ProblemCard({
   title,
   tags,
   stressScore,
-  accent = 'coral',
+  accent = 'urgent',
   onUnmess,
   onViewPlan,
   onClick,
@@ -95,8 +103,8 @@ export function ProblemCard({
 }: ProblemCardProps) {
   const theme = useTheme();
   
-  // Get accent color from theme
-  const accentColor = TAG_ACCENT_COLORS[accent];
+  // Get accent color from tokens directly
+  const accentColor = tokens.color.semantic.status[accent === 'neutral' ? 'analysis' : accent];
 
   // Build ARIA label
   const computedAriaLabel = ariaLabel ||
@@ -109,11 +117,11 @@ export function ProblemCard({
   const seed = title.length;
   const initialRotate = disabled ? 0 : (seed % 3) - 1;
 
-  // Framer Motion wrapper for the Card
-  const MotionCard = motion(Card);
+  // Framer Motion wrapper for the Surface (replacing Card)
+  const MotionSurface = motion(Surface);
 
   return (
-    <MotionCard
+    <MotionSurface
       role="article"
       aria-label={computedAriaLabel}
       tabIndex={onClick && !disabled ? 0 : undefined}
@@ -124,30 +132,24 @@ export function ProblemCard({
       whileHover={!disabled && onClick ? { 
         rotate: 0, 
         scale: 1.005, // Very subtle scale
-        boxShadow: `0 12px 40px rgba(0,0,0,0.6)` // Monochromatic dark shadow, no color glow
+        boxShadow: tokens.elevation.semantic.card.focused // Monochromatic dark shadow, no color glow
       } : {}}
       whileTap={!disabled && onClick ? { scale: 0.99 } : {}}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-
+      
+      variant="glass"
       sx={{
-        // Glassmorphism Base
-        backgroundColor: theme.palette.semantic.bg.surface, // Semantic Surface
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)', // Safari support
-        
         // Border & Glow
-        borderRadius: 2, // 16px - tighter than before (was 24px)
-        border: `1px solid ${theme.palette.semantic.border.subtle}`, // Semantic Border
-        borderTop: `1px solid ${theme.palette.semantic.border.highlight}`, // Semantic Highlight
+        borderRadius: tokens.radius.semantic.lg,
+        borderTop: `${tokens.border.width.base} ${tokens.border.style.solid} ${tokens.color.semantic.border.highlight}`,
         
         // Dimensions
-        minWidth: { xs: '280px', sm: 'auto' },
-        maxWidth: '400px',
+        minWidth: { xs: tokens.spacing.semantic.layout.width.xs, sm: 'auto' },
+        maxWidth: tokens.spacing.semantic.layout.width.sm,
         height: 'auto',
-        overflow: 'hidden', // Clip children to rounded corners
         
         // Default Shadow (Void bioluminescence)
-        boxShadow: `0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px ${accentColor}20`, // Subtle colored outline
+        boxShadow: `${tokens.elevation.semantic.card.rest}, 0 0 0 ${tokens.border.width.base} ${accentColor}20`, // Subtle colored outline
         
         // Interactive cursor
         cursor: onClick && !disabled ? 'pointer' : 'default',
@@ -172,7 +174,7 @@ export function ProblemCard({
             lineHeight: 1.2,
             mb: 2,
             color: theme.palette.semantic.text.primary, // Semantic Text
-            textShadow: '0 2px 4px rgba(0,0,0,0.3)', // Text legibility on glass
+            textShadow: tokens.elevation.semantic.text.legibility, // Text legibility on glass
           }}
         >
           {title}
@@ -188,12 +190,13 @@ export function ProblemCard({
             sx={{ mb: 2 }}
           >
             {tags.slice(0, 5).map((tag, index) => (
-              <TagChip
+              <Tag
                 key={tag}
                 label={tag}
-                variant="display"
+                variant="solid"
                 color={getRotatedAccentColor(index)}
-                size="medium"
+                size="md"
+                tape
               />
             ))}
           </Stack>
@@ -223,7 +226,7 @@ export function ProblemCard({
                 flexGrow: 1,
                 height: 6,
                 backgroundColor: theme.palette.semantic.border.subtle, // Use border color for track
-                borderRadius: '999px',
+                borderRadius: tokens.radius.semantic.pill,
                 overflow: 'hidden',
                 position: 'relative',
               }}
@@ -236,7 +239,7 @@ export function ProblemCard({
                   height: '100%',
                   width: `${(stressScore / 10) * 100}%`,
                   backgroundColor: accentColor,
-                  borderRadius: '999px',
+                  borderRadius: tokens.radius.semantic.pill,
                 }}
               />
             </Box>
@@ -251,34 +254,15 @@ export function ProblemCard({
             {/* Primary action */}
             {onUnmess && (
               <Button
-                variant="contained"
+                variant="primary"
                 onClick={(e) => {
                   e.stopPropagation();
                   onUnmess();
                 }}
+                // Manually pass disabled if Button supports it (our Atom does via props spread)
                 disabled={disabled}
                 aria-label="Start unmess process"
-                sx={{
-                  flex: 1,
-                  minHeight: 48,
-                  // Match UnmessButton (FAB) style
-                  backgroundColor: theme.palette.semantic.action.primary, // Semantic Action
-                  color: theme.palette.semantic.text.inverse, // Semantic Inverse Text
-                  fontFamily: '"JetBrains Mono", monospace',
-                  fontWeight: 700,
-                  textTransform: 'none', // Normal case
-                  letterSpacing: '0.05em',
-                  fontSize: '0.9rem',
-                  borderRadius: '8px', // Square-ish
-                  boxShadow: 'none', // No default shadow/glow
-                  border: `1px solid ${theme.palette.semantic.action.primary}40`,
-                  
-                  '&:hover': {
-                    backgroundColor: theme.palette.semantic.action.hover, // Semantic Hover
-                    boxShadow: 'none',
-                    transform: 'none', // Remove scale effect
-                  },
-                }}
+                sx={{ flex: 1 }}
               >
                 Unmess Me
               </Button>
@@ -287,7 +271,7 @@ export function ProblemCard({
             {/* Secondary action */}
             {onViewPlan && (
               <Button
-                variant="outlined"
+                variant="secondary"
                 onClick={(e) => {
                   e.stopPropagation();
                   onViewPlan();
@@ -296,22 +280,7 @@ export function ProblemCard({
                 aria-label="View existing plan"
                 sx={{
                   flex: onUnmess ? undefined : 1,
-                  minHeight: 48,
                   minWidth: onUnmess ? 48 : undefined,
-                  borderColor: theme.palette.semantic.border.highlight, // Semantic highlight
-                  color: theme.palette.semantic.text.secondary, // Semantic Secondary text
-                  fontFamily: '"JetBrains Mono", monospace',
-                  textTransform: 'none', // Normal case
-                  letterSpacing: '0.05em',
-                  fontSize: '0.85rem',
-                  borderRadius: '8px', // Square-ish
-                  
-                  '&:hover': {
-                    borderColor: theme.palette.semantic.action.primary, // Hover becomes primary
-                    color: theme.palette.semantic.action.primary,
-                    backgroundColor: 'rgba(42, 157, 143, 0.05)', // Keep very subtle tint manually or create token
-                    boxShadow: 'none', // No shadow for secondary
-                  },
                 }}
               >
                 {onUnmess ? '...' : 'View Plan'}
@@ -320,7 +289,7 @@ export function ProblemCard({
           </Stack>
         </CardActions>
       )}
-    </MotionCard>
+    </MotionSurface>
   );
 }
 
@@ -334,12 +303,18 @@ export function ProblemCard({
  *     key={problem.id}
  *     title={problem.title}
  *     tags={problem.tags}
- *     accent={getCardAccentColor(index)}
+ *     accent="urgent"
  *   />
  * ))}
  */
 export function getCardAccentColor(
   index: number
-): keyof typeof TAG_ACCENT_COLORS {
-  return getRotatedAccentColor(index);
+): 'urgent' | 'analysis' | 'success' | 'neutral' {
+  const colors: ('urgent' | 'analysis' | 'success' | 'neutral')[] = [
+    'urgent',
+    'analysis',
+    'success',
+    'neutral',
+  ];
+  return colors[index % colors.length];
 }

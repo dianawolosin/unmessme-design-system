@@ -1,0 +1,7 @@
+{
+  "raw_content": "---\nid: switch\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: inputs\nstatus: implemented\n---\n\n# Switch\n\nA toggle for activating or deactivating a state.\n\n## Purpose\n\nTo switch between two mutually exclusive states (On/Off).\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `color=\"primary\"` | `semantic.action.primary` |\n| `track` | `semantic.border.highlight` |\n\n## API\n\n```tsx\ninterface SwitchProps extends MuiSwitchProps {\n  color?: 'primary' | 'secondary' | 'success' | 'default';\n}\n```\n\n## Usage\n\n```tsx\n<Switch checked={isDark} onChange={toggleTheme} />\n```\n\n",
+  "sections": {
+    "intro": "---\nid: switch\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: inputs\nstatus: implemented\n---",
+    "Switch": "A toggle for activating or deactivating a state.\n\n## Purpose\n\nTo switch between two mutually exclusive states (On/Off).\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `color=\"primary\"` | `semantic.action.primary` |\n| `track` | `semantic.border.highlight` |\n\n## API\n\n```tsx\ninterface SwitchProps extends MuiSwitchProps {\n  color?: 'primary' | 'secondary' | 'success' | 'default';\n}\n```\n\n## Usage\n\n```tsx\n<Switch checked={isDark} onChange={toggleTheme} />\n```"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "raw_content": "---\nid: progress\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: feedback\nstatus: implemented\n---\n\n# Progress\n\nFeedback for system status and loading.\n\n## Purpose\n\nTo indicate active processing or current stress levels.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `color=\"analysis\"` | `semantic.status.analysis` (Iris) |\n| `type=\"linear\"` | Sharp, 2px height (Terminal style) |\n\n## API\n\n```tsx\ninterface ProgressProps {\n  type?: 'linear' | 'circular';\n  value?: number;\n  color?: 'primary' | 'urgent' | 'analysis';\n  size?: number;\n}\n```\n\n## Usage\n\n```tsx\n<Progress type=\"linear\" value={75} color=\"urgent\" />\n```\n\n",
+  "sections": {
+    "intro": "---\nid: progress\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: feedback\nstatus: implemented\n---",
+    "Progress": "Feedback for system status and loading.\n\n## Purpose\n\nTo indicate active processing or current stress levels.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `color=\"analysis\"` | `semantic.status.analysis` (Iris) |\n| `type=\"linear\"` | Sharp, 2px height (Terminal style) |\n\n## API\n\n```tsx\ninterface ProgressProps {\n  type?: 'linear' | 'circular';\n  value?: number;\n  color?: 'primary' | 'urgent' | 'analysis';\n  size?: number;\n}\n```\n\n## Usage\n\n```tsx\n<Progress type=\"linear\" value={75} color=\"urgent\" />\n```"
+  }
+}

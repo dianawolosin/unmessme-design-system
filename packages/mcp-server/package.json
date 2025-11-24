@@ -1,0 +1,32 @@
+{
+  "name": "@unmessme/mcp-server",
+  "version": "0.1.0",
+  "description": "UnmessMe Context Engine MCP Server",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc -w",
+    "setup:benchmark": "bash scripts/setup-benchmark.sh",
+    "transform:test2": "npx ts-node src/utils/transformers/run-test2.ts",
+    "transform:test3": "npx ts-node src/utils/transformers/run-test3.ts",
+    "transform:test4": "npx ts-node src/utils/transformers/run-test4.ts",
+    "benchmark:tokens": "echo 'Run benchmark_formats tool via MCP'",
+    "benchmark:chunks": "echo 'Run inspect_chunks tool via MCP'",
+    "benchmark:retrieval": "echo 'Run test_retrieval tool via MCP'",
+    "test:simple": "node hello.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "fs-extra": "^11.2.0",
+    "zod": "^3.22.4",
+    "zod-to-json-schema": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3"
+  }
+}

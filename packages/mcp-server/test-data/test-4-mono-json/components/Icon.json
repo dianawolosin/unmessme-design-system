@@ -1,0 +1,7 @@
+{
+  "raw_content": "---\nid: icon\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: data-display\nstatus: implemented\n---\n\n# Icon\n\nWrapper for SVG icons.\n\n## Purpose\n\nTo enforce sizing and semantic coloring for icons.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `size=\"md\"` | `24px` |\n| `color` | Inherits or accepts semantic token |\n\n## API\n\n```tsx\ninterface IconProps extends SvgIconProps {\n  size?: 'sm' | 'md' | 'lg' | 'xl';\n  color?: string;\n}\n```\n\n## Usage\n\n```tsx\n<Icon size=\"lg\" color={tokens.color.semantic.status.urgent}>\n  <WarningIcon />\n</Icon>\n```\n\n",
+  "sections": {
+    "intro": "---\nid: icon\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: data-display\nstatus: implemented\n---",
+    "Icon": "Wrapper for SVG icons.\n\n## Purpose\n\nTo enforce sizing and semantic coloring for icons.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `size=\"md\"` | `24px` |\n| `color` | Inherits or accepts semantic token |\n\n## API\n\n```tsx\ninterface IconProps extends SvgIconProps {\n  size?: 'sm' | 'md' | 'lg' | 'xl';\n  color?: string;\n}\n```\n\n## Usage\n\n```tsx\n<Icon size=\"lg\" color={tokens.color.semantic.status.urgent}>\n  <WarningIcon />\n</Icon>\n```"
+  }
+}

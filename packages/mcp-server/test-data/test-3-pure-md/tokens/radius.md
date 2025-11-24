@@ -1,0 +1,40 @@
+# radius Tokens
+
+- **$schema**: https://design-tokens.org/schemas/1.0/schema.json
+- **radius.primitive.0.$value**: 0
+- **radius.primitive.0.$type**: dimension
+- **radius.primitive.2.$value**: 2px
+- **radius.primitive.2.$type**: dimension
+- **radius.primitive.4.$value**: 4px
+- **radius.primitive.4.$type**: dimension
+- **radius.primitive.8.$value**: 8px
+- **radius.primitive.8.$type**: dimension
+- **radius.primitive.12.$value**: 12px
+- **radius.primitive.12.$type**: dimension
+- **radius.primitive.16.$value**: 16px
+- **radius.primitive.16.$type**: dimension
+- **radius.primitive.full.$value**: 9999px
+- **radius.primitive.full.$type**: dimension
+- **radius.semantic.none.$value**: {radius.primitive.0}
+- **radius.semantic.none.$type**: dimension
+- **radius.semantic.xs.$value**: {radius.primitive.2}
+- **radius.semantic.xs.$type**: dimension
+- **radius.semantic.xs.$description**: Sharp corners (Tags)
+- **radius.semantic.sm.$value**: {radius.primitive.4}
+- **radius.semantic.sm.$type**: dimension
+- **radius.semantic.sm.$description**: Subtle rounding
+- **radius.semantic.md.$value**: {radius.primitive.8}
+- **radius.semantic.md.$type**: dimension
+- **radius.semantic.md.$description**: Buttons, Inputs
+- **radius.semantic.lg.$value**: {radius.primitive.12}
+- **radius.semantic.lg.$type**: dimension
+- **radius.semantic.lg.$description**: Cards (V3 Tight)
+- **radius.semantic.xl.$value**: {radius.primitive.16}
+- **radius.semantic.xl.$type**: dimension
+- **radius.semantic.xl.$description**: Modals, Large Surfaces
+- **radius.semantic.pill.$value**: {radius.primitive.full}
+- **radius.semantic.pill.$type**: dimension
+- **radius.semantic.pill.$description**: Pill shapes
+- **radius.semantic.circle.$value**: 50%
+- **radius.semantic.circle.$type**: dimension
+- **radius.semantic.circle.$description**: Perfect circle

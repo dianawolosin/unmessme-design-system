@@ -1,0 +1,67 @@
+# colors Tokens
+
+- **$schema**: https://design-tokens.org/schemas/1.0/schema.json
+- **color.primitive.slate.700.$value**: #2C3338
+- **color.primitive.slate.700.$type**: color
+- **color.primitive.slate.800.$value**: #1E2327
+- **color.primitive.slate.800.$type**: color
+- **color.primitive.slate.900.$value**: #121619
+- **color.primitive.slate.900.$type**: color
+- **color.primitive.bone.100.$value**: #E0E1DD
+- **color.primitive.bone.100.$type**: color
+- **color.primitive.bone.200.$value**: #C4C5C1
+- **color.primitive.bone.200.$type**: color
+- **color.primitive.seafoam.main.$value**: #2A9D8F
+- **color.primitive.seafoam.main.$type**: color
+- **color.primitive.seafoam.light.$value**: #4DC0B2
+- **color.primitive.seafoam.light.$type**: color
+- **color.primitive.seafoam.dark.$value**: #1F7A70
+- **color.primitive.seafoam.dark.$type**: color
+- **color.primitive.terracotta.main.$value**: #E07A5F
+- **color.primitive.terracotta.main.$type**: color
+- **color.primitive.terracotta.dark.$value**: #B3614C
+- **color.primitive.terracotta.dark.$type**: color
+- **color.primitive.iris.main.$value**: #8187DC
+- **color.primitive.iris.main.$type**: color
+- **color.primitive.iris.dark.$value**: #676BB0
+- **color.primitive.iris.dark.$type**: color
+- **color.primitive.charcoal.main.$value**: #3D405B
+- **color.primitive.charcoal.main.$type**: color
+- **color.semantic.bg.canvas.$value**: {color.primitive.slate.900}
+- **color.semantic.bg.canvas.$type**: color
+- **color.semantic.bg.canvas.$description**: Main app background (Gunmetal Void)
+- **color.semantic.bg.surface.$value**: rgba(30, 35, 39, 0.6)
+- **color.semantic.bg.surface.$type**: color
+- **color.semantic.bg.surface.$description**: Base glass surface color
+- **color.semantic.bg.backdrop.$value**: rgba(0, 0, 0, 0.7)
+- **color.semantic.bg.backdrop.$type**: color
+- **color.semantic.bg.backdrop.$description**: Modal backdrop
+- **color.semantic.bg.overlay.$value**: rgba(0, 0, 0, 0.2)
+- **color.semantic.bg.overlay.$type**: color
+- **color.semantic.bg.overlay.$description**: Dimmer for inactive areas
+- **color.semantic.bg.glass_tint.$value**: rgba(255, 255, 255, 0.02)
+- **color.semantic.bg.glass_tint.$type**: color
+- **color.semantic.bg.glass_tint.$description**: Subtle tint for glass surfaces
+- **color.semantic.text.primary.$value**: {color.primitive.bone.100}
+- **color.semantic.text.primary.$type**: color
+- **color.semantic.text.secondary.$value**: rgba(224, 225, 221, 0.6)
+- **color.semantic.text.secondary.$type**: color
+- **color.semantic.text.disabled.$value**: rgba(224, 225, 221, 0.3)
+- **color.semantic.text.disabled.$type**: color
+- **color.semantic.text.inverse.$value**: {color.primitive.slate.900}
+- **color.semantic.text.inverse.$type**: color
+- **color.semantic.action.primary.$value**: {color.primitive.seafoam.main}
+- **color.semantic.action.primary.$type**: color
+- **color.semantic.action.primary.$description**: Primary action color (Unmess Button)
+- **color.semantic.action.hover.$value**: {color.primitive.seafoam.dark}
+- **color.semantic.action.hover.$type**: color
+- **color.semantic.status.urgent.$value**: {color.primitive.terracotta.main}
+- **color.semantic.status.urgent.$type**: color
+- **color.semantic.status.analysis.$value**: {color.primitive.iris.main}
+- **color.semantic.status.analysis.$type**: color
+- **color.semantic.status.success.$value**: {color.primitive.seafoam.main}
+- **color.semantic.status.success.$type**: color
+- **color.semantic.border.subtle.$value**: rgba(255, 255, 255, 0.08)
+- **color.semantic.border.subtle.$type**: color
+- **color.semantic.border.highlight.$value**: rgba(255, 255, 255, 0.15)
+- **color.semantic.border.highlight.$type**: color

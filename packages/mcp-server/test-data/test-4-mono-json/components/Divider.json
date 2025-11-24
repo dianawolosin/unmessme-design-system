@@ -1,0 +1,7 @@
+{
+  "raw_content": "---\nid: divider\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: layout\nstatus: implemented\n---\n\n# Divider\n\nVisual separation element.\n\n## Purpose\n\nTo visually separate content sections, especially in \"receipt\" style layouts.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `variant=\"dashed\"` | `border-bottom: 1px dashed` |\n| `intensity=\"subtle\"` | `semantic.border.subtle` |\n\n## API\n\n```tsx\ninterface DividerProps extends MuiDividerProps {\n  variant?: 'solid' | 'dashed';\n  intensity?: 'subtle' | 'highlight' | 'bold';\n}\n```\n\n## Usage\n\n```tsx\n<Divider variant=\"dashed\" />\n```\n\n",
+  "sections": {
+    "intro": "---\nid: divider\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: layout\nstatus: implemented\n---",
+    "Divider": "Visual separation element.\n\n## Purpose\n\nTo visually separate content sections, especially in \"receipt\" style layouts.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `variant=\"dashed\"` | `border-bottom: 1px dashed` |\n| `intensity=\"subtle\"` | `semantic.border.subtle` |\n\n## API\n\n```tsx\ninterface DividerProps extends MuiDividerProps {\n  variant?: 'solid' | 'dashed';\n  intensity?: 'subtle' | 'highlight' | 'bold';\n}\n```\n\n## Usage\n\n```tsx\n<Divider variant=\"dashed\" />\n```"
+  }
+}

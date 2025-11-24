@@ -1,0 +1,88 @@
+# spacing Tokens
+
+- **$schema**: https://design-tokens.org/schemas/1.0/schema.json
+- **spacing.primitive.base.$value**: 0.25rem
+- **spacing.primitive.base.$type**: dimension
+- **spacing.primitive.base.$description**: 4px base unit
+- **spacing.primitive.scale.1.$value**: 0.25rem
+- **spacing.primitive.scale.1.$type**: dimension
+- **spacing.primitive.scale.2.$value**: 0.5rem
+- **spacing.primitive.scale.2.$type**: dimension
+- **spacing.primitive.scale.3.$value**: 0.75rem
+- **spacing.primitive.scale.3.$type**: dimension
+- **spacing.primitive.scale.4.$value**: 1rem
+- **spacing.primitive.scale.4.$type**: dimension
+- **spacing.primitive.scale.6.$value**: 1.5rem
+- **spacing.primitive.scale.6.$type**: dimension
+- **spacing.primitive.scale.8.$value**: 2rem
+- **spacing.primitive.scale.8.$type**: dimension
+- **spacing.primitive.scale.12.$value**: 3rem
+- **spacing.primitive.scale.12.$type**: dimension
+- **spacing.primitive.scale.16.$value**: 4rem
+- **spacing.primitive.scale.16.$type**: dimension
+- **spacing.semantic.gap.xs.$value**: {spacing.primitive.scale.2}
+- **spacing.semantic.gap.xs.$type**: dimension
+- **spacing.semantic.gap.xs.$description**: Tight gap (chips)
+- **spacing.semantic.gap.sm.$value**: {spacing.primitive.scale.3}
+- **spacing.semantic.gap.sm.$type**: dimension
+- **spacing.semantic.gap.sm.$description**: Small gap
+- **spacing.semantic.gap.md.$value**: {spacing.primitive.scale.4}
+- **spacing.semantic.gap.md.$type**: dimension
+- **spacing.semantic.gap.md.$description**: Default component gap
+- **spacing.semantic.gap.lg.$value**: {spacing.primitive.scale.6}
+- **spacing.semantic.gap.lg.$type**: dimension
+- **spacing.semantic.gap.lg.$description**: Section gap
+- **spacing.semantic.padding.chip.$value**: 0px 4px
+- **spacing.semantic.padding.chip.$type**: dimension
+- **spacing.semantic.padding.chip.$description**: Tight chip padding (V3 Masking Tape)
+- **spacing.semantic.padding.card.$value**: {spacing.primitive.scale.6}
+- **spacing.semantic.padding.card.$type**: dimension
+- **spacing.semantic.padding.card.$description**: Standard card padding
+- **spacing.semantic.padding.screen.$value**: {spacing.primitive.scale.4}
+- **spacing.semantic.padding.screen.$type**: dimension
+- **spacing.semantic.padding.screen.$description**: Screen edge padding
+- **spacing.semantic.padding.tab.$value**: {spacing.primitive.scale.3} {spacing.primitive.scale.6}
+- **spacing.semantic.padding.tab.$type**: dimension
+- **spacing.semantic.padding.tab.$description**: 12px 24px for tabs
+- **spacing.semantic.layout.max_width.$value**: 1280px
+- **spacing.semantic.layout.max_width.$type**: dimension
+- **spacing.semantic.layout.sidebar.$value**: 280px
+- **spacing.semantic.layout.sidebar.$type**: dimension
+- **spacing.semantic.layout.touch_target.$value**: 48px
+- **spacing.semantic.layout.touch_target.$type**: dimension
+- **spacing.semantic.layout.width.xs.$value**: 280px
+- **spacing.semantic.layout.width.xs.$type**: dimension
+- **spacing.semantic.layout.width.xs.$description**: Min card width
+- **spacing.semantic.layout.width.sm.$value**: 400px
+- **spacing.semantic.layout.width.sm.$type**: dimension
+- **spacing.semantic.layout.width.sm.$description**: Small container
+- **spacing.semantic.layout.width.md.$value**: 600px
+- **spacing.semantic.layout.width.md.$type**: dimension
+- **spacing.semantic.layout.width.md.$description**: Medium container
+- **spacing.semantic.layout.width.lg.$value**: 800px
+- **spacing.semantic.layout.width.lg.$type**: dimension
+- **spacing.semantic.layout.width.lg.$description**: Large container
+- **spacing.semantic.layout.width.xl.$value**: 900px
+- **spacing.semantic.layout.width.xl.$type**: dimension
+- **spacing.semantic.layout.width.xl.$description**: Extra large container
+- **spacing.semantic.layout.height.xs.$value**: 20px
+- **spacing.semantic.layout.height.xs.$type**: dimension
+- **spacing.semantic.layout.height.xs.$description**: Extra small height
+- **spacing.semantic.layout.height.sm.$value**: 24px
+- **spacing.semantic.layout.height.sm.$type**: dimension
+- **spacing.semantic.layout.height.sm.$description**: Small height
+- **spacing.semantic.layout.height.md.$value**: 32px
+- **spacing.semantic.layout.height.md.$type**: dimension
+- **spacing.semantic.layout.height.md.$description**: Medium height
+- **spacing.semantic.layout.height.lg.$value**: 48px
+- **spacing.semantic.layout.height.lg.$type**: dimension
+- **spacing.semantic.layout.height.lg.$description**: Large height
+- **spacing.semantic.layout.height.xl.$value**: 56px
+- **spacing.semantic.layout.height.xl.$type**: dimension
+- **spacing.semantic.layout.height.xl.$description**: Extra large height
+- **spacing.semantic.pattern.receipt_notch.$value**: 8px 16px
+- **spacing.semantic.pattern.receipt_notch.$type**: dimension
+- **spacing.semantic.transform.hover_lift.$value**: -4px
+- **spacing.semantic.transform.hover_lift.$type**: dimension
+- **spacing.semantic.transform.hover_nudge.$value**: 4px
+- **spacing.semantic.transform.hover_nudge.$type**: dimension

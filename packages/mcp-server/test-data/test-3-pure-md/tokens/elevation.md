@@ -1,0 +1,36 @@
+# elevation Tokens
+
+- **$schema**: https://design-tokens.org/schemas/1.0/schema.json
+- **elevation.primitive.flat.$value**: none
+- **elevation.primitive.flat.$type**: shadow
+- **elevation.primitive.text_legibility.$value**: 0 2px 4px rgba(0,0,0,0.3)
+- **elevation.primitive.text_legibility.$type**: shadow
+- **elevation.primitive.subtle.$value**: 0 1px 2px 0 rgba(0, 0, 0, 0.5)
+- **elevation.primitive.subtle.$type**: shadow
+- **elevation.primitive.medium.$value**: 0 4px 20px rgba(0, 0, 0, 0.4)
+- **elevation.primitive.medium.$type**: shadow
+- **elevation.primitive.heavy.$value**: 0 12px 40px rgba(0,0,0,0.6)
+- **elevation.primitive.heavy.$type**: shadow
+- **elevation.primitive.glow_seafoam.$value**: 0 0 15px rgba(42, 157, 143, 0.4)
+- **elevation.primitive.glow_seafoam.$type**: shadow
+- **elevation.primitive.focus_ring.$value**: 0 0 0 2px rgba(42, 157, 143, 0.2)
+- **elevation.primitive.focus_ring.$type**: shadow
+- **elevation.semantic.text.legibility.$value**: {elevation.primitive.text_legibility}
+- **elevation.semantic.text.legibility.$type**: shadow
+- **elevation.semantic.card.rest.$value**: {elevation.primitive.medium}
+- **elevation.semantic.card.rest.$type**: shadow
+- **elevation.semantic.card.focused.$value**: {elevation.primitive.heavy}
+- **elevation.semantic.card.focused.$type**: shadow
+- **elevation.semantic.card.focused.$description**: Active state for ProblemCard
+- **elevation.semantic.card.hover.$value**: none
+- **elevation.semantic.card.hover.$type**: shadow
+- **elevation.semantic.card.hover.$description**: Flat on hover per V3 spec
+- **elevation.semantic.button.primary.$value**: none
+- **elevation.semantic.button.primary.$type**: shadow
+- **elevation.semantic.button.primary.$description**: Flat buttons V3
+- **elevation.semantic.button.hover.$value**: none
+- **elevation.semantic.button.hover.$type**: shadow
+- **elevation.semantic.modal.$value**: 0 20px 50px -10px rgba(0,0,0,0.7)
+- **elevation.semantic.modal.$type**: shadow
+- **elevation.semantic.focus_ring.$value**: {elevation.primitive.focus_ring}
+- **elevation.semantic.focus_ring.$type**: shadow

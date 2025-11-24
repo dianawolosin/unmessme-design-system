@@ -1,0 +1,7 @@
+{
+  "raw_content": "---\nid: badge\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: data-display\nstatus: implemented\n---\n\n# Badge\n\nNotification and status indicator.\n\n## Purpose\n\nTo flag items with count or status.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `variant=\"dot\"` | `8px` circle |\n| `color=\"urgent\"` | `semantic.status.urgent` |\n\n## API\n\n```tsx\ninterface BadgeProps extends MuiBadgeProps {\n  variant?: 'dot' | 'standard';\n  color?: 'primary' | 'urgent' | 'analysis' | 'success';\n}\n```\n\n## Usage\n\n```tsx\n<Badge variant=\"dot\" color=\"urgent\">\n  <Icon />\n</Badge>\n```\n\n",
+  "sections": {
+    "intro": "---\nid: badge\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: data-display\nstatus: implemented\n---",
+    "Badge": "Notification and status indicator.\n\n## Purpose\n\nTo flag items with count or status.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `variant=\"dot\"` | `8px` circle |\n| `color=\"urgent\"` | `semantic.status.urgent` |\n\n## API\n\n```tsx\ninterface BadgeProps extends MuiBadgeProps {\n  variant?: 'dot' | 'standard';\n  color?: 'primary' | 'urgent' | 'analysis' | 'success';\n}\n```\n\n## Usage\n\n```tsx\n<Badge variant=\"dot\" color=\"urgent\">\n  <Icon />\n</Badge>\n```"
+  }
+}

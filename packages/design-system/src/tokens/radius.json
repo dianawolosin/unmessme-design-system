@@ -1,0 +1,24 @@
+{
+  "$schema": "https://design-tokens.org/schemas/1.0/schema.json",
+  "radius": {
+    "primitive": {
+      "0": { "$value": "0", "$type": "dimension" },
+      "2": { "$value": "2px", "$type": "dimension" },
+      "4": { "$value": "4px", "$type": "dimension" },
+      "8": { "$value": "8px", "$type": "dimension" },
+      "12": { "$value": "12px", "$type": "dimension" },
+      "16": { "$value": "16px", "$type": "dimension" },
+      "full": { "$value": "9999px", "$type": "dimension" }
+    },
+    "semantic": {
+      "none": { "$value": "{radius.primitive.0}", "$type": "dimension" },
+      "xs": { "$value": "{radius.primitive.2}", "$type": "dimension", "$description": "Sharp corners (Tags)" },
+      "sm": { "$value": "{radius.primitive.4}", "$type": "dimension", "$description": "Subtle rounding" },
+      "md": { "$value": "{radius.primitive.8}", "$type": "dimension", "$description": "Buttons, Inputs" },
+      "lg": { "$value": "{radius.primitive.12}", "$type": "dimension", "$description": "Cards (V3 Tight)" },
+      "xl": { "$value": "{radius.primitive.16}", "$type": "dimension", "$description": "Modals, Large Surfaces" },
+      "pill": { "$value": "{radius.primitive.full}", "$type": "dimension", "$description": "Pill shapes" },
+      "circle": { "$value": "50%", "$type": "dimension", "$description": "Perfect circle" }
+    }
+  }
+}

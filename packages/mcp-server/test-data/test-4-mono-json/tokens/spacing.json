@@ -1,0 +1,58 @@
+{
+  "$schema": "https://design-tokens.org/schemas/1.0/schema.json",
+  "spacing": {
+    "primitive": {
+      "base": { "$value": "0.25rem", "$type": "dimension", "$description": "4px base unit" },
+      "scale": {
+        "1": { "$value": "0.25rem", "$type": "dimension" },
+        "2": { "$value": "0.5rem", "$type": "dimension" },
+        "3": { "$value": "0.75rem", "$type": "dimension" },
+        "4": { "$value": "1rem", "$type": "dimension" },
+        "6": { "$value": "1.5rem", "$type": "dimension" },
+        "8": { "$value": "2rem", "$type": "dimension" },
+        "12": { "$value": "3rem", "$type": "dimension" },
+        "16": { "$value": "4rem", "$type": "dimension" }
+      }
+    },
+    "semantic": {
+      "gap": {
+        "xs": { "$value": "{spacing.primitive.scale.2}", "$type": "dimension", "$description": "Tight gap (chips)" },
+        "sm": { "$value": "{spacing.primitive.scale.3}", "$type": "dimension", "$description": "Small gap" },
+        "md": { "$value": "{spacing.primitive.scale.4}", "$type": "dimension", "$description": "Default component gap" },
+        "lg": { "$value": "{spacing.primitive.scale.6}", "$type": "dimension", "$description": "Section gap" }
+      },
+      "padding": {
+        "chip": { "$value": "0px 4px", "$type": "dimension", "$description": "Tight chip padding (V3 Masking Tape)" },
+        "card": { "$value": "{spacing.primitive.scale.6}", "$type": "dimension", "$description": "Standard card padding" },
+        "screen": { "$value": "{spacing.primitive.scale.4}", "$type": "dimension", "$description": "Screen edge padding" },
+        "tab": { "$value": "{spacing.primitive.scale.3} {spacing.primitive.scale.6}", "$type": "dimension", "$description": "12px 24px for tabs" }
+      },
+      "layout": {
+        "max_width": { "$value": "1280px", "$type": "dimension" },
+        "sidebar": { "$value": "280px", "$type": "dimension" },
+        "touch_target": { "$value": "48px", "$type": "dimension" },
+        "width": {
+          "xs": { "$value": "280px", "$type": "dimension", "$description": "Min card width" },
+          "sm": { "$value": "400px", "$type": "dimension", "$description": "Small container" },
+          "md": { "$value": "600px", "$type": "dimension", "$description": "Medium container" },
+          "lg": { "$value": "800px", "$type": "dimension", "$description": "Large container" },
+          "xl": { "$value": "900px", "$type": "dimension", "$description": "Extra large container" }
+        },
+        "height": {
+          "xs": { "$value": "20px", "$type": "dimension", "$description": "Extra small height" },
+          "sm": { "$value": "24px", "$type": "dimension", "$description": "Small height" },
+          "md": { "$value": "32px", "$type": "dimension", "$description": "Medium height" },
+          "lg": { "$value": "48px", "$type": "dimension", "$description": "Large height" },
+          "xl": { "$value": "56px", "$type": "dimension", "$description": "Extra large height" }
+        }
+      },
+      "pattern": {
+        "receipt_notch": { "$value": "8px 16px", "$type": "dimension" }
+      },
+      "transform": {
+        "hover_lift": { "$value": "-4px", "$type": "dimension" },
+        "hover_nudge": { "$value": "4px", "$type": "dimension" }
+      }
+    }
+  }
+}

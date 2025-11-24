@@ -1,0 +1,7 @@
+{
+  "raw_content": "---\nid: avatar\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: data-display\nstatus: implemented\n---\n\n# Avatar\n\nUser identity representation.\n\n## Purpose\n\nTo display user profile images or initials.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `shape` | `border-radius: 25%` (Squircle) |\n| `active` | `border: 2px solid semantic.action.primary` |\n\n## API\n\n```tsx\ninterface AvatarProps extends MuiAvatarProps {\n  src?: string;\n  size?: 'sm' | 'md' | 'lg' | 'xl';\n  active?: boolean;\n}\n```\n\n## Usage\n\n```tsx\n<Avatar src=\"/user.jpg\" active />\n```\n\n",
+  "sections": {
+    "intro": "---\nid: avatar\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: data-display\nstatus: implemented\n---",
+    "Avatar": "User identity representation.\n\n## Purpose\n\nTo display user profile images or initials.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `shape` | `border-radius: 25%` (Squircle) |\n| `active` | `border: 2px solid semantic.action.primary` |\n\n## API\n\n```tsx\ninterface AvatarProps extends MuiAvatarProps {\n  src?: string;\n  size?: 'sm' | 'md' | 'lg' | 'xl';\n  active?: boolean;\n}\n```\n\n## Usage\n\n```tsx\n<Avatar src=\"/user.jpg\" active />\n```"
+  }
+}

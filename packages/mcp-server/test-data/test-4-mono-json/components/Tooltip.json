@@ -1,0 +1,7 @@
+{
+  "raw_content": "---\nid: tooltip\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: data-display\nstatus: implemented\n---\n\n# Tooltip\n\nMicro-context provider.\n\n## Purpose\n\nTo explain UI elements on hover.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `bg` | `semantic.bg.surface` |\n| `border` | `semantic.border.subtle` |\n| `font` | `typography.primitive.fontFamily.mono` |\n\n## API\n\n```tsx\ninterface TooltipProps extends MuiTooltipProps {\n  title: React.ReactNode;\n}\n```\n\n## Usage\n\n```tsx\n<Tooltip title=\"Help text\">\n  <Button>Hover me</Button>\n</Tooltip>\n```\n\n",
+  "sections": {
+    "intro": "---\nid: tooltip\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: data-display\nstatus: implemented\n---",
+    "Tooltip": "Micro-context provider.\n\n## Purpose\n\nTo explain UI elements on hover.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `bg` | `semantic.bg.surface` |\n| `border` | `semantic.border.subtle` |\n| `font` | `typography.primitive.fontFamily.mono` |\n\n## API\n\n```tsx\ninterface TooltipProps extends MuiTooltipProps {\n  title: React.ReactNode;\n}\n```\n\n## Usage\n\n```tsx\n<Tooltip title=\"Help text\">\n  <Button>Hover me</Button>\n</Tooltip>\n```"
+  }
+}

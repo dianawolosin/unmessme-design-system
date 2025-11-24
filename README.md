@@ -4,7 +4,7 @@
 
 ## 🎯 Project Goal
 
-Build a machine-readable design system for **Into Design Systems Vibe Coding Conference 2025 demo** showcasing AI-powered UI generation through Model Context Protocol (MCP).
+Build a machine-readable design system for **Conference 2026 demo** showcasing AI-powered UI generation through Model Context Protocol (MCP).
 
 ## 📦 Monorepo Structure
 
@@ -24,8 +24,8 @@ UnmessMe Design System/
 │       ├── src/                Demo app
 │       └── package.json
 │
-├── Context Eng/                7 Blueprints (Product logic)
-├── ai/                         AI instructions & roadmap
+├── context-engine/           7 Blueprints (Product logic)
+├── ai-orchestration/         AI instructions & roadmap
 ├── package.json               Workspace config
 └── tsconfig.json              Shared TypeScript config
 ```
@@ -38,7 +38,7 @@ UnmessMe Design System/
 - **Publishable npm package** (`@unmessme/design-system`)
 - Built with: React, TypeScript, Vite, Material UI
 
-### 2. Context Engine (`Context Eng/`)
+### 2. Context Engine (`context-engine/`)
 - **7 Blueprints** defining product logic, constraints, and rules:
   - Business Intelligence
   - UX Blueprint
@@ -139,9 +139,9 @@ npm run build:prototype
 
 ## 📖 Documentation
 
-- **Project Roadmap:** `ai/project_north_star.md`
-- **AI Instructions:** `ai/.cursorrules`
-- **Blueprints:** `Context Eng/` (7 files)
+- **Project Roadmap:** `ai-orchestration/project_north_star.md`
+- **AI Instructions:** `ai-orchestration/.cursorrules`
+- **Blueprints:** `context-engine/` (7 files)
 - **Component Specs:** `packages/design-system/components/` (MD format)
 - **Design Tokens:** `packages/design-system/tokens/` (JSON format)
 

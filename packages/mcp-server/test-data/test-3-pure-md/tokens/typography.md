@@ -1,0 +1,62 @@
+# typography Tokens
+
+- **$schema**: https://design-tokens.org/schemas/1.0/schema.json
+- **typography.primitive.fontFamily.serif.$value**: 'Fraunces', serif
+- **typography.primitive.fontFamily.serif.$type**: fontFamily
+- **typography.primitive.fontFamily.mono.$value**: 'JetBrains Mono', monospace
+- **typography.primitive.fontFamily.mono.$type**: fontFamily
+- **typography.primitive.fontFamily.sans.$value**: 'Inter', sans-serif
+- **typography.primitive.fontFamily.sans.$type**: fontFamily
+- **typography.primitive.fontSize.xs.$value**: 0.75rem
+- **typography.primitive.fontSize.xs.$type**: dimension
+- **typography.primitive.fontSize.sm.$value**: 0.875rem
+- **typography.primitive.fontSize.sm.$type**: dimension
+- **typography.primitive.fontSize.md.$value**: 1rem
+- **typography.primitive.fontSize.md.$type**: dimension
+- **typography.primitive.fontSize.lg.$value**: 1.25rem
+- **typography.primitive.fontSize.lg.$type**: dimension
+- **typography.primitive.fontSize.xl.$value**: 1.5rem
+- **typography.primitive.fontSize.xl.$type**: dimension
+- **typography.primitive.fontSize.2xl.$value**: 2.5rem
+- **typography.primitive.fontSize.2xl.$type**: dimension
+- **typography.primitive.fontSize.3xl.$value**: 3.5rem
+- **typography.primitive.fontSize.3xl.$type**: dimension
+- **typography.primitive.fontWeight.regular.$value**: 400
+- **typography.primitive.fontWeight.regular.$type**: fontWeight
+- **typography.primitive.fontWeight.medium.$value**: 500
+- **typography.primitive.fontWeight.medium.$type**: fontWeight
+- **typography.primitive.fontWeight.bold.$value**: 700
+- **typography.primitive.fontWeight.bold.$type**: fontWeight
+- **typography.semantic.heading.display.font.$value**: {typography.primitive.fontFamily.serif}
+- **typography.semantic.heading.display.font.$type**: fontFamily
+- **typography.semantic.heading.display.size.$value**: {typography.primitive.fontSize.3xl}
+- **typography.semantic.heading.display.size.$type**: dimension
+- **typography.semantic.heading.display.weight.$value**: {typography.primitive.fontWeight.bold}
+- **typography.semantic.heading.display.weight.$type**: fontWeight
+- **typography.semantic.heading.card.font.$value**: {typography.primitive.fontFamily.serif}
+- **typography.semantic.heading.card.font.$type**: fontFamily
+- **typography.semantic.heading.card.size.$value**: {typography.primitive.fontSize.xl}
+- **typography.semantic.heading.card.size.$type**: dimension
+- **typography.semantic.heading.card.weight.$value**: {typography.primitive.fontWeight.bold}
+- **typography.semantic.heading.card.weight.$type**: fontWeight
+- **typography.semantic.body.main.font.$value**: {typography.primitive.fontFamily.mono}
+- **typography.semantic.body.main.font.$type**: fontFamily
+- **typography.semantic.body.main.size.$value**: {typography.primitive.fontSize.md}
+- **typography.semantic.body.main.size.$type**: dimension
+- **typography.semantic.body.small.font.$value**: {typography.primitive.fontFamily.mono}
+- **typography.semantic.body.small.font.$type**: fontFamily
+- **typography.semantic.body.small.size.$value**: {typography.primitive.fontSize.sm}
+- **typography.semantic.body.small.size.$type**: dimension
+- **typography.semantic.label.tag.font.$value**: {typography.primitive.fontFamily.mono}
+- **typography.semantic.label.tag.font.$type**: fontFamily
+- **typography.semantic.label.tag.size.$value**: 12px
+- **typography.semantic.label.tag.size.$type**: dimension
+- **typography.semantic.label.tag.size.$description**: Fixed 12px for tags
+- **typography.semantic.label.tag.weight.$value**: {typography.primitive.fontWeight.bold}
+- **typography.semantic.label.tag.weight.$type**: fontWeight
+- **typography.semantic.label.button.font.$value**: {typography.primitive.fontFamily.mono}
+- **typography.semantic.label.button.font.$type**: fontFamily
+- **typography.semantic.label.button.size.$value**: {typography.primitive.fontSize.sm}
+- **typography.semantic.label.button.size.$type**: dimension
+- **typography.semantic.label.button.weight.$value**: {typography.primitive.fontWeight.bold}
+- **typography.semantic.label.button.weight.$type**: fontWeight

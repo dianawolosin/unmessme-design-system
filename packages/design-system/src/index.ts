@@ -10,14 +10,7 @@
 export { theme as unmessTheme, theme, customAccents, spacingTokens, layout } from './theme';
 
 // Component exports
-export { ProblemCard } from './components/ProblemCard';
-export type { ProblemCardProps } from './components/ProblemCard';
-
-export { TagChip, TAG_ACCENT_COLORS, getRotatedAccentColor } from './components/TagChip';
-export type { TagChipProps } from './components/TagChip';
-
-export { UnmessButton } from './components/UnmessButton';
-export type { UnmessButtonProps } from './components/UnmessButton';
+export * from './components';
 
 // Re-export commonly used MUI components for convenience
 export {
@@ -31,4 +24,3 @@ export {
 
 // Additional MUI re-exports for convenience
 export type { Theme } from '@mui/material/styles';
-

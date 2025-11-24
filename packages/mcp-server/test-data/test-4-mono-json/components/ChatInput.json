@@ -1,0 +1,7 @@
+{
+  "raw_content": "---\nid: chat-input\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: inputs\nstatus: implemented\n---\n\n# ChatInput\n\nA conversational input field.\n\n## Purpose\n\nTo collect user input in a \"chat with a friend\" format.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `font` | `semantic.heading.display` (Fraunces) |\n| `placeholder` | `semantic.text.secondary` (Italic) |\n\n## API\n\n```tsx\ninterface ChatInputProps {\n  placeholder?: string;\n  onSubmit: (text: string) => void;\n  isThinking?: boolean;\n  disabled?: boolean;\n}\n```\n\n## Usage\n\n```tsx\n<ChatInput onSubmit={handleSend} />\n```\n\n",
+  "sections": {
+    "intro": "---\nid: chat-input\ntype: component\nplatform: web\nframework: react\nbase: mui\ncategory: inputs\nstatus: implemented\n---",
+    "ChatInput": "A conversational input field.\n\n## Purpose\n\nTo collect user input in a \"chat with a friend\" format.\n\n## Design Tokens\n\n| Prop | Token Source |\n| :--- | :--- |\n| `font` | `semantic.heading.display` (Fraunces) |\n| `placeholder` | `semantic.text.secondary` (Italic) |\n\n## API\n\n```tsx\ninterface ChatInputProps {\n  placeholder?: string;\n  onSubmit: (text: string) => void;\n  isThinking?: boolean;\n  disabled?: boolean;\n}\n```\n\n## Usage\n\n```tsx\n<ChatInput onSubmit={handleSend} />\n```"
+  }
+}
